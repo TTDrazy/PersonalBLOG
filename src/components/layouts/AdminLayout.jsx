@@ -7,7 +7,7 @@ import {
     TeamOutlined,
     UserOutlined,
 } from "@ant-design/icons";
-import "./AdminLayout.less";
+import style from "./AdminLayout.module.scss";
 const { SubMenu } = Menu;
 const { Title } = Typography;
 
@@ -24,14 +24,14 @@ export default class AdminLayout extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <div className="header">
-                        <Title level={3} className="title">
+                <div className={style.container}>
+                    <div className={style.header}>
+                        <Title level={3} className={style.title}>
                             Drazy's BLOG Manage
                         </Title>
                     </div>
-                    <div className="middle">
-                        <div className="left">
+                    <div className={style.middle}>
+                        <div className={style.left}>
                             <Menu
                                 theme="light"
                                 defaultSelectedKeys={["1"]}
@@ -65,19 +65,19 @@ export default class AdminLayout extends Component {
                                 </Menu.Item>
                             </Menu>
                         </div>
-                        <div className="right">
-                            <div className="content">
-                                <div className="bread-top">
+                        <div className={style.right}>
+                            <div className={style.content}>
+                                <div className={style.breadTop}>
                                     {/* <Breadcrumb style={{ margin: "16px 0" }}>
                                         <Breadcrumb.Item>User</Breadcrumb.Item>
                                         <Breadcrumb.Item>Bill</Breadcrumb.Item>
                                     </Breadcrumb> */}
                                 </div>
-                                <div className="main-content">
+                                <div className={style.mainContent}>
                                     {this.props.children ||
                                         "生活不易，猫猫叹气"}
                                 </div>
-                                <div className="bottom">
+                                <div className={style.bottom}>
                                     Drazy's BLOG ©2020 Created By Drazy
                                 </div>
                             </div>

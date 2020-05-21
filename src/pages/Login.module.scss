@@ -1,13 +1,12 @@
 .container {
     width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     .top {
         display: flex;
         .title {
-            color:powderblue;
+            color: powderblue;
             align-items: center;
             padding: 10px 30px;
         }
@@ -17,43 +16,64 @@
         display: flex;
         justify-content: space-between;
         .left {
-            width:40%;
+            width: 40%;
             .hello {
                 display: flex;
                 justify-content: flex-start;
                 img {
-                   width:100%;
+                    width: 100%;
                 }
             }
         }
         .right {
-            width: 60%;
+            flex: 1;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .avatar{
-                padding:0 0 20px 0;
-                img{
-                    width:60px;
-                    height:60px;
-                    border-radius: 50%;
-                    border:3px solid powderblue;
-                }
-            }
-            .formBox{
-                width:70%;
+            .inputBox {
+                flex: 1;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                .checkbox{
-                    justify-content: flex-end;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 100px;
+                .avatar {
+                    display: flex;
+                    justify-content: center;
+                    margin: 0 0 20px 0;
+                }
+                img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    border: 3px solid powderblue;
+                }
+                .formBox {
+                    width: 45%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .checkboxBox {
+                        display: flex;
+                        justify-content: flex-end;
+                        .checkbox {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                        }
+                    }
+                    .buttonBox {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        .login {
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }
     }
 }
-.ant-form{
-    flex:1;
+.ant-form {
+    flex: 1;
     padding: 0 20% 0 0%;
 }

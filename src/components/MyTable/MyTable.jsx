@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Tag, Space } from "antd";
+import style from './MyTable.module.scss'
 
 const { Column, ColumnGroup } = Table;
 
@@ -32,7 +33,7 @@ const data = [
 export default function MyTable() {
     return (
         <>
-            <Table dataSource={data}>
+            <Table dataSource={data} className={style.myTable}>
                 <ColumnGroup title="Name">
                     <Column
                         title="First Name"
