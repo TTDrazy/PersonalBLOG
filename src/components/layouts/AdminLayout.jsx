@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { Menu, Breadcrumb, Typography } from "antd";
-import {
-    DesktopOutlined,
-    PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
-    UserOutlined,
-} from "@ant-design/icons";
+import { FileTextTwoTone, GoldTwoTone, SmileTwoTone } from "@ant-design/icons";
 import style from "./AdminLayout.module.scss";
+import avatarImg from "../../assets/imgs/login/avatar.png";
+import { Link } from "react-router-dom";
 const { SubMenu } = Menu;
 const { Title } = Typography;
 
@@ -29,40 +25,60 @@ export default class AdminLayout extends Component {
                         <Title level={3} className={style.title}>
                             Drazy's BLOG Manage
                         </Title>
+                        <img
+                            alt="头像"
+                            src={avatarImg}
+                            className={style.avatar}
+                        ></img>
                     </div>
                     <div className={style.middle}>
                         <div className={style.left}>
                             <Menu
                                 theme="light"
+                                defaultOpenKeys={["article", "personal"]}
                                 defaultSelectedKeys={["1"]}
                                 mode="inline"
                             >
-                                <Menu.Item key="1" icon={<PieChartOutlined />}>
-                                    Option 1
-                                </Menu.Item>
-                                <Menu.Item key="2" icon={<DesktopOutlined />}>
-                                    Option 2
-                                </Menu.Item>
                                 <SubMenu
-                                    key="sub1"
-                                    icon={<UserOutlined />}
-                                    title="User"
+                                    key="article"
+                                    icon={<FileTextTwoTone />}
+                                    title="文章管理"
                                 >
-                                    <Menu.Item key="3">Tom</Menu.Item>
-                                    <Menu.Item key="4">Bill</Menu.Item>
-                                    <Menu.Item key="5">Alex</Menu.Item>
+                                    <Menu.Item key="1">
+                                        <Link to="/admin/article">
+                                            浏览文章
+                                        </Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="2">
+                                        <Link to="/admin/article/add">
+                                            新增文章
+                                        </Link>
+                                    </Menu.Item>
                                 </SubMenu>
                                 <SubMenu
-                                    key="sub2"
-                                    icon={<TeamOutlined />}
-                                    title="Team"
+                                    key="classify"
+                                    icon={<GoldTwoTone />}
+                                    title="分类管理"
                                 >
-                                    <Menu.Item key="6">Team 1</Menu.Item>
-                                    <Menu.Item key="8">Team 2</Menu.Item>
+                                    <Menu.Item key="3">
+                                        <Link to="/admin/classify">
+                                            浏览分类
+                                        </Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="4">
+                                        <Link to="/admin/classify/add">
+                                            新增分类
+                                        </Link>
+                                    </Menu.Item>
                                 </SubMenu>
-                                <Menu.Item key="9" icon={<FileOutlined />}>
-                                    File
-                                </Menu.Item>
+                                <SubMenu
+                                    key="personal"
+                                    icon={<SmileTwoTone />}
+                                    title="个人管理"
+                                >
+                                    <Menu.Item key="5">个人资料</Menu.Item>
+                                    <Menu.Item key="6">设置</Menu.Item>
+                                </SubMenu>
                             </Menu>
                         </div>
                         <div className={style.right}>

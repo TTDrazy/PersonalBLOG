@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .InputBox {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px 0;
+        .select {
+            width: 30%;
+        }
+        .search {
+            width: 30%;
+        }
+    }
+}

@@ -53,7 +53,7 @@ export default class Login extends Component {
                                         </Form.Item>
 
                                         <Form.Item
-                                            label="密码："
+                                            label="密  码："
                                             name="password"
                                         >
                                             <Input.Password />
