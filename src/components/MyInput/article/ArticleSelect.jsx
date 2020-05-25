@@ -111,7 +111,7 @@ export default class ArticleSelect extends Component {
         const { searchInfo } = this.state;
         const { selectValue } = this.props;
         // console.log(searchInfo);
-         console.log(selectValue);
+        // console.log(selectValue);
         return (
             <>
                 <Input.Group compact>

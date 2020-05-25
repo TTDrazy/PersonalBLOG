@@ -1,85 +1,116 @@
 import React, { Component } from "react";
-import { Menu, Breadcrumb, Typography } from "antd";
-import { FileTextTwoTone, GoldTwoTone, SmileTwoTone } from "@ant-design/icons";
+import { Menu, Breadcrumb, Typography, Layout } from "antd";
+import {
+    FileTextTwoTone,
+    GoldTwoTone,
+    SmileTwoTone,
+    MenuUnfoldOutlined,
+    MenuFoldOutlined,
+} from "@ant-design/icons";
 import style from "./AdminLayout.module.scss";
 import avatarImg from "../../assets/imgs/login/avatar.png";
-import { Link } from "react-router-dom";
-const { SubMenu } = Menu;
-const { Title } = Typography;
+import Logo from "../../assets/imgs/logo/logo.jpg";
+import { withRouter } from "react-router";
 
-export default class AdminLayout extends Component {
+const { Title } = Typography;
+const { Sider } = Layout;
+
+class AdminLayout extends Component {
     state = {
         collapsed: false,
     };
 
-    onCollapse = (collapsed) => {
-        console.log(collapsed);
-        this.setState({ collapsed });
+    toggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    };
+    toRouter = (toUrl) => {
+        this.props.history.push(toUrl);
     };
 
     render() {
         return (
             <>
                 <div className={style.container}>
-                    <div className={style.header}>
-                        <Title level={3} className={style.title}>
-                            Drazy's BLOG Manage
-                        </Title>
-                        <img
-                            alt="头像"
-                            src={avatarImg}
-                            className={style.avatar}
-                        ></img>
-                    </div>
-                    <div className={style.middle}>
-                        <div className={style.left}>
-                            <Menu
-                                theme="light"
-                                defaultOpenKeys={["article", "personal"]}
-                                defaultSelectedKeys={["1"]}
-                                mode="inline"
+                    <div className={style.leftBox}>
+                        <div className={style.siderBox}>
+                            <Sider
+                                theme="dark"
+                                width="250px"
+                                trigger={null}
+                                collapsible
+                                collapsed={this.state.collapsed}
                             >
-                                <SubMenu
-                                    key="article"
-                                    icon={<FileTextTwoTone />}
-                                    title="文章管理"
+                                <div className={style.header}>
+                                    <div className={style.logo}>
+                                        <img alt="logo" src={Logo}></img>
+                                    </div>
+                                    {this.state.collapsed ? (
+                                        <></>
+                                    ) : (
+                                        <Title
+                                            level={3}
+                                            className={style.title}
+                                        >
+                                            Drazy's BLOG
+                                        </Title>
+                                    )}
+                                </div>
+                                <Menu
+                                    theme="dark"
+                                    //defaultOpenKeys={["article", "personal"]}
+                                    defaultSelectedKeys={["article"]}
+                                    mode="inline"
                                 >
-                                    <Menu.Item key="1">
-                                        <Link to="/admin/article">
-                                            浏览文章
-                                        </Link>
+                                    <Menu.Item
+                                        key="article"
+                                        icon={<FileTextTwoTone />}
+                                        onClick={() =>
+                                            this.toRouter("/admin/article")
+                                        }
+                                    >
+                                        文章管理
                                     </Menu.Item>
-                                    <Menu.Item key="2">
-                                        <Link to="/admin/article/add">
-                                            新增文章
-                                        </Link>
+                                    <Menu.Item
+                                        key="classify"
+                                        icon={<GoldTwoTone />}
+                                        onClick={() =>
+                                            this.toRouter("/admin/classify")
+                                        }
+                                    >
+                                        分类管理
                                     </Menu.Item>
-                                </SubMenu>
-                                <SubMenu
-                                    key="classify"
-                                    icon={<GoldTwoTone />}
-                                    title="分类管理"
-                                >
-                                    <Menu.Item key="3">
-                                        <Link to="/admin/classify">
-                                            浏览分类
-                                        </Link>
-                                    </Menu.Item>
-                                    <Menu.Item key="4">
-                                        <Link to="/admin/classify/add">
-                                            新增分类
-                                        </Link>
-                                    </Menu.Item>
-                                </SubMenu>
-                                <SubMenu
-                                    key="personal"
-                                    icon={<SmileTwoTone />}
-                                    title="个人管理"
-                                >
-                                    <Menu.Item key="5">个人资料</Menu.Item>
-                                    <Menu.Item key="6">设置</Menu.Item>
-                                </SubMenu>
-                            </Menu>
+                                </Menu>
+                            </Sider>
+                        </div>
+                    </div>
+                    <div className={style.rightBox}>
+                        <div className={style.rightHeader}>
+                            {/* 控制 Sider 收缩按钮 */}
+                            <div
+                                className={
+                                    ("site-layout-background",
+                                    style.toggleButton)
+                                }
+                            >
+                                {React.createElement(
+                                    this.state.collapsed
+                                        ? MenuUnfoldOutlined
+                                        : MenuFoldOutlined,
+                                    {
+                                        className: "trigger",
+                                        onClick: this.toggle,
+                                    }
+                                )}
+                            </div>
+                            <div className={style.avatar}>
+                                <img
+                                    alt="头像"
+                                    src={avatarImg}
+                                    className={style.avatarImage}
+                                ></img>
+                            </div>
                         </div>
                         <div className={style.right}>
                             <div className={style.content}>
@@ -104,3 +135,5 @@ export default class AdminLayout extends Component {
         );
     }
 }
+
+export default withRouter(AdminLayout);

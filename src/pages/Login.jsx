@@ -25,7 +25,6 @@ class Login extends Component {
         } else if (!password) {
             message.warning("密码不能为空!");
         } else if (userName === "Drazy" && password === "111") {
-            message.success("登陆成功!即将跳转至后台管理页~");
             this.setState({
                 isAdmin: true,
             });
@@ -35,9 +34,19 @@ class Login extends Component {
     }
     //跳转至 admin 页面
     toAdmin = () => {
-        this.checkInfo();
-        if (this.state.isAdmin) {
+        const { userName, password } = this.state;
+        if (!userName) {
+            message.warning("用户名不能为空!");
+        } else if (!password) {
+            message.warning("密码不能为空!");
+        } else if (userName === "Drazy" && password === "111") {
+            this.setState({
+                isAdmin: true,
+            });
+            message.success("登陆成功!即将跳转至后台管理页~");
             this.props.history.push("/admin");
+        } else {
+            message.warning("用户名或密码错误！");
         }
     };
     onFinish = (values) => {
@@ -102,7 +111,6 @@ class Login extends Component {
                                             />
                                             <span></span>
                                         </Form.Item>
-
                                         <Form.Item
                                             name="password"
                                             className={style.input}
