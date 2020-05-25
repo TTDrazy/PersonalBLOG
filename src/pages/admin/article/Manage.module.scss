@@ -5,13 +5,29 @@
     flex-direction: column;
     .InputBox {
         display: flex;
-        justify-content: space-around;
-        padding: 40px 0;
+        padding: 30px 0;
         .select {
-            width: 30%;
+            max-width: 300px;
+            min-width: 100px;
+            padding-left: 50px;
         }
         .search {
-            width: 30%;
+            max-width: 300px;
+            min-width: 100px;
+            padding-left: 50px;
+        }
+    }
+    .tableBox{
+        display: flex;
+        flex-direction: column;
+        .tableTitle{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:10px 20px 20px 20px;
+            .title{
+                font-size: 18px;
+            }
         }
     }
 }

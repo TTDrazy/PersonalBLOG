@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Table, Tag, Space, Button } from "antd";
+import { Table, Tag, Space, Button ,Popconfirm} from "antd";
 import style from "./ArticleTable.module.scss";
 
-const { Column, ColumnGroup } = Table;
+const { Column } = Table;
 
 class ArticleTable extends Component {
     state = {
@@ -40,32 +40,28 @@ class ArticleTable extends Component {
                     <Column
                         align="center"
                         title="所属分类"
-                        dataIndex="classifyList"
-                        key="classifyList"
-                        render={(classifyList) => (
-                            <>
-                                {classifyList.map((item) => (
-                                    <Tag color="blue" key={item}>
-                                        {item}
-                                    </Tag>
-                                ))}
-                            </>
+                        dataIndex="classifyName"
+                        key="classifyName"
+                        render={(classifyName) => (
+                            <Tag color="blue" key={classifyName}>
+                                {classifyName}
+                            </Tag>
                         )}
                     />
-                    <ColumnGroup title="时间">
-                        <Column
-                            align="center"
-                            title="创建时间"
-                            dataIndex="createTime"
-                            key="createTime"
-                        />
-                        <Column
-                            align="center"
-                            title="修改时间"
-                            dataIndex="editTime"
-                            key="editTime"
-                        />
-                    </ColumnGroup>
+
+                    <Column
+                        align="center"
+                        title="创建时间"
+                        dataIndex="createTime"
+                        key="createTime"
+                    />
+                    <Column
+                        align="center"
+                        title="修改时间"
+                        dataIndex="editTime"
+                        key="editTime"
+                    />
+
                     <Column
                         align="center"
                         title="操作"
@@ -75,7 +71,9 @@ class ArticleTable extends Component {
                                 <Button
                                     type="dashed"
                                     onClick={() =>
-                                        alert(`我要修改 id 为${text.id}的信息！`)
+                                        alert(
+                                            `我要修改 id 为${text.id}的信息！`
+                                        )
                                     }
                                 >
                                     修改
@@ -83,7 +81,9 @@ class ArticleTable extends Component {
                                 <Button
                                     type="danger"
                                     onClick={() =>
-                                        alert(`我要删除 id 为${text.id}的信息！`)
+                                        alert(
+                                            `我要删除 id 为${text.id}的信息！`
+                                        )
                                     }
                                 >
                                     删除

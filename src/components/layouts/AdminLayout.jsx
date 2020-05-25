@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import { Menu, Breadcrumb, Typography, Layout } from "antd";
+import { Menu, Breadcrumb, Typography, Layout, Dropdown } from "antd";
 import {
-    FileTextTwoTone,
-    GoldTwoTone,
-    SmileTwoTone,
+    FileTextOutlined,
+    PartitionOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    UserOutlined,
+    SettingOutlined,
+    LogoutOutlined,
 } from "@ant-design/icons";
 import style from "./AdminLayout.module.scss";
 import avatarImg from "../../assets/imgs/login/avatar.png";
 import Logo from "../../assets/imgs/logo/logo.jpg";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 const { Sider } = Layout;
@@ -30,108 +33,133 @@ class AdminLayout extends Component {
     };
 
     render() {
+        const menu = (
+            <Menu className={style.menu}>
+                <Menu.Item className={style.menuItem}>
+                    <a href="#">
+                        <UserOutlined style={{ paddingRight: "10px" }} />
+                        个人中心
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a href="#">
+                        <SettingOutlined style={{ paddingRight: "10px" }} />
+                        个人设置
+                    </a>
+                </Menu.Item>
+                <Menu.Divider />
+                <Menu.Item>
+                    <a href="#">
+                        <LogoutOutlined style={{ paddingRight: "10px" }} />
+                        退出登录
+                    </a>
+                </Menu.Item>
+            </Menu>
+        );
         return (
-            <>
-                <div className={style.container}>
-                    <div className={style.leftBox}>
-                        <div className={style.siderBox}>
-                            <Sider
-                                theme="dark"
-                                width="250px"
-                                trigger={null}
-                                collapsible
-                                collapsed={this.state.collapsed}
-                            >
-                                <div className={style.header}>
-                                    <div className={style.logo}>
-                                        <img alt="logo" src={Logo}></img>
-                                    </div>
-                                    {this.state.collapsed ? (
-                                        <></>
-                                    ) : (
-                                        <Title
-                                            level={3}
-                                            className={style.title}
-                                        >
-                                            Drazy's BLOG
-                                        </Title>
-                                    )}
+            <div className={style.container}>
+                <div className={style.leftBox}>
+                    <div className={style.siderBox}>
+                        <Sider
+                            theme="dark"
+                            width="250px"
+                            trigger={null}
+                            collapsible
+                            collapsed={this.state.collapsed}
+                        >
+                            <div className={style.header}>
+                                <div className={style.logo}>
+                                    <img alt="logo" src={Logo}></img>
                                 </div>
-                                <Menu
-                                    theme="dark"
-                                    //defaultOpenKeys={["article", "personal"]}
-                                    defaultSelectedKeys={["article"]}
-                                    mode="inline"
-                                >
-                                    <Menu.Item
-                                        key="article"
-                                        icon={<FileTextTwoTone />}
-                                        onClick={() =>
-                                            this.toRouter("/admin/article")
-                                        }
-                                    >
-                                        文章管理
-                                    </Menu.Item>
-                                    <Menu.Item
-                                        key="classify"
-                                        icon={<GoldTwoTone />}
-                                        onClick={() =>
-                                            this.toRouter("/admin/classify")
-                                        }
-                                    >
-                                        分类管理
-                                    </Menu.Item>
-                                </Menu>
-                            </Sider>
-                        </div>
-                    </div>
-                    <div className={style.rightBox}>
-                        <div className={style.rightHeader}>
-                            {/* 控制 Sider 收缩按钮 */}
-                            <div
-                                className={
-                                    ("site-layout-background",
-                                    style.toggleButton)
-                                }
-                            >
-                                {React.createElement(
-                                    this.state.collapsed
-                                        ? MenuUnfoldOutlined
-                                        : MenuFoldOutlined,
-                                    {
-                                        className: "trigger",
-                                        onClick: this.toggle,
-                                    }
+                                {this.state.collapsed ? (
+                                    <></>
+                                ) : (
+                                    <Title level={3} className={style.title}>
+                                        Drazy's BLOG
+                                    </Title>
                                 )}
                             </div>
-                            <div className={style.avatar}>
+                            <Menu
+                                theme="dark"
+                                //defaultOpenKeys={["article", "personal"]}
+                                defaultSelectedKeys={["article"]}
+                                mode="inline"
+                            >
+                                <Menu.Item
+                                    key="article"
+                                    icon={<FileTextOutlined />}
+                                >
+                                    <Link to="/admin/article">文章管理</Link>
+                                </Menu.Item>
+
+                                <Menu.Item
+                                    key="classify"
+                                    icon={<PartitionOutlined />}
+                                >
+                                    <Link to="/admin/classify">分类管理</Link>
+                                </Menu.Item>
+                            </Menu>
+                        </Sider>
+                    </div>
+                </div>
+                <div className={style.rightBox}>
+                    <div className={style.rightHeader}>
+                        {/* 控制 Sider 收缩按钮 */}
+                        <div
+                            className={
+                                ("site-layout-background", style.toggleButton)
+                            }
+                        >
+                            {React.createElement(
+                                this.state.collapsed
+                                    ? MenuUnfoldOutlined
+                                    : MenuFoldOutlined,
+                                {
+                                    className: "trigger",
+                                    onClick: this.toggle,
+                                }
+                            )}
+                        </div>
+
+                        <div className={style.avatar}>
+                            <Dropdown
+                                overlay={menu}
+                                placement="bottomRight"
+                                overlayStyle={{
+                                    width: "180px",
+                                    padding: "5px 10px",
+                                }}
+                            >
                                 <img
                                     alt="头像"
                                     src={avatarImg}
-                                    className={style.avatarImage}
+                                    className={[
+                                        style.avatarImage,
+                                        "ant-dropdown-link",
+                                    ]}
+                                    onClick={(e) => e.preventDefault()}
                                 ></img>
-                            </div>
+                            </Dropdown>
                         </div>
-                        <div className={style.right}>
-                            <div className={style.content}>
-                                <div className={style.breadTop}>
-                                    {/* <Breadcrumb style={{ margin: "16px 0" }}>
+                    </div>
+                    <div className={style.right}>
+                        <div className={style.content}>
+                            <div className={style.breadTop}>
+                                {/* <Breadcrumb style={{ margin: "16px 0" }}>
                                         <Breadcrumb.Item>User</Breadcrumb.Item>
                                         <Breadcrumb.Item>Bill</Breadcrumb.Item>
                                     </Breadcrumb> */}
-                                </div>
-                                <div className={style.mainContent}>
-                                    {this.props.children ||
-                                        "生活不易，猫猫叹气"}
-                                </div>
-                                <div className={style.bottom}>
-                                    Drazy's BLOG ©2020 Created By Drazy
-                                </div>
+                            </div>
+                            <div className={style.mainContent}>
+                                {this.props.children || "生活不易，猫猫叹气"}
+                            </div>
+                            <div className={style.bottom}>
+                                Drazy's BLOG ©2020 Created By Drazy
                             </div>
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
