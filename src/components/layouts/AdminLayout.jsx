@@ -49,10 +49,10 @@ class AdminLayout extends Component {
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item>
-                    <a href="#">
+                    <Link to="/login">
                         <LogoutOutlined style={{ paddingRight: "10px" }} />
                         退出登录
-                    </a>
+                    </Link>
                 </Menu.Item>
             </Menu>
         );

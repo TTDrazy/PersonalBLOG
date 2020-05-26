@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Manage from "../../../components/Manage/Manage";
+
 const tableList = [
     {
         id: 1,
         name: "John",
-        classifyList: ["css", "js"],
+        classifyName: "css",
         isShow: true,
         createTime: 1559536167,
         editTime: 1590116944,
@@ -12,23 +13,23 @@ const tableList = [
     {
         id: 2,
         name: "Jim",
-        classifyList: ["html"],
-        isShow: true,
+        classifyName: "html",
+        isShow: false,
         createTime: 1559536167,
         editTime: 1590116944,
     },
     {
         id: 3,
         name: "Joe",
-        classifyList: ["vue", "react"],
-        isShow: false,
+        classifyName: "vue",
+        isShow: true,
         createTime: 1559536167,
         editTime: 1590116944,
     },
     {
         id: 4,
         name: "John",
-        classifyList: ["css", "js"],
+        classifyName: "js",
         isShow: true,
         createTime: 1559536167,
         editTime: 1590116944,
@@ -36,7 +37,7 @@ const tableList = [
     {
         id: 5,
         name: "Jim",
-        classifyList: ["html"],
+        classifyName: "html",
         isShow: true,
         createTime: 1559536167,
         editTime: 1590116944,
@@ -44,7 +45,7 @@ const tableList = [
     {
         id: 6,
         name: "Joe",
-        classifyList: ["vue", "react"],
+        classifyName: "vue",
         isShow: false,
         createTime: 1559536167,
         editTime: 1590116944,
@@ -52,15 +53,15 @@ const tableList = [
     {
         id: 7,
         name: "John",
-        classifyList: ["css", "js"],
-        isShow: true,
+        classifyName: "css",
+        isShow: false,
         createTime: 1559536167,
         editTime: 1590116944,
     },
     {
         id: 8,
         name: "Jim",
-        classifyList: ["html"],
+        classifyName: "html",
         isShow: true,
         createTime: 1559536167,
         editTime: 1590116944,
@@ -68,16 +69,48 @@ const tableList = [
     {
         id: 9,
         name: "Joe",
-        classifyList: ["vue", "react"],
+        classifyName: "react",
+        isShow: true,
+        createTime: 1559536167,
+        editTime: 1590116944,
+    },
+    {
+        id: 10,
+        name: "Joe",
+        classifyName: "vue",
+        isShow: false,
+        createTime: 1559536167,
+        editTime: 1590116944,
+    },
+    {
+        id: 11,
+        name: "John",
+        classifyName: "css",
+        isShow: true,
+        createTime: 1559536167,
+        editTime: 1590116944,
+    },
+    {
+        id: 12,
+        name: "Jim",
+        classifyName: "html",
+        isShow: true,
+        createTime: 1559536167,
+        editTime: 1590116944,
+    },
+    {
+        id: 13,
+        name: "Joe",
+        classifyName: "react",
         isShow: false,
         createTime: 1559536167,
         editTime: 1590116944,
     },
 ];
-class ClssifyManage extends Component {
+class ArticleManage extends Component {
     render() {
-        return <Manage isClassify={true} tableList={tableList}></Manage>;
+        return <Manage tableList={tableList}></Manage>;
     }
 }
 
-export default ClssifyManage;
+export default ArticleManage;

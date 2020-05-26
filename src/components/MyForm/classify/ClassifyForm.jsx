@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import style from "../article/ArticleForm.module.scss";
 import { Typography, Input, DatePicker, Button } from "antd";
-import ArticleSelect from "../../MyInput/article/ArticleSelect";
+import MySelect from "../../MyInput/MySelect";
 import moment from "moment";
 
 const { Title } = Typography;
@@ -57,14 +57,10 @@ export default class ClassifyForm extends Component {
             createTime,
             editTime,
         } = this.state;
-        const { title } = this.props;
         console.log(classifyList);
         return (
             <>
                 <div className={style.container}>
-                    <div className={style.title}>
-                        <Title level={3}>{title}</Title>
-                    </div>
                     <div className={style.fromBox}>
                         <div className={style.inputBox}>
                             <span>分类编号：</span>
@@ -90,14 +86,14 @@ export default class ClassifyForm extends Component {
                         <div className={style.inputBox}>
                             <span>所属分类：</span>
                             <div className={style.input}>
-                                <ArticleSelect
+                                <MySelect
                                     selectValue={classifyList}
                                     type="select"
                                     placeholder="请选择分类"
                                     changeSelect={(list) =>
                                         this.changeSelect(list)
                                     }
-                                ></ArticleSelect>
+                                ></MySelect>
                             </div>
                         </div>
                         <div className={style.date}>
@@ -114,7 +110,7 @@ export default class ClassifyForm extends Component {
                                 </div>
                             </div>
                             <div className={style.dateBox}>
-                                <span>当前时间：</span>
+                                <span>修改时间：</span>
                                 <div className={style.dateInput}>
                                     <DatePicker
                                         defaultValue={moment(

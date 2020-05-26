@@ -4,7 +4,7 @@ import "./App.less";
 import * as serviceWorker from "./serviceWorker";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import Manage from "./pages/admin/article/Manage";
+import ArticleManage from "./pages/admin/article/ArticleManage";
 import ArticleAdd from "./pages/admin/article/ArticleAdd";
 import ArticleEdit from "./pages/admin/article/ArticleEdit";
 import ClassifyManage from "./pages/admin/classify/ClssifyManage";
@@ -15,8 +15,8 @@ ReactDOM.render(
     <Router>
         <Route path="/" />
         <Route path="/login" component={Login} />
-        <Route path="/admin" exact component={Manage} />
-        <Route path="/admin/article" exact component={Manage} />
+        <Route path="/admin" exact component={ArticleManage} />
+        <Route path="/admin/article" exact component={ArticleManage} />
         <Route path="/admin/article/add" exact component={ArticleAdd} />
         <Route path="/admin/article/edit" exact component={ArticleEdit} />
         <Route path="/admin/classify" exact component={ClassifyManage} />

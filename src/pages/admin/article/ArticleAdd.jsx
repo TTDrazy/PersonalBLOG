@@ -7,7 +7,7 @@ export default class ArticleAdd extends Component {
         return (
             <>
                 <AdminLayout>
-                    <ArticleForm title='新增文章'></ArticleForm>
+                    <ArticleForm></ArticleForm>
                 </AdminLayout>
             </>
         );

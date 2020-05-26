@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Input, Cascader, Button, notification } from "antd";
-import { SmileOutlined } from "@ant-design/icons";
+import { Input, Cascader, Button } from "antd";
 
 const options = [
     {
@@ -66,14 +65,8 @@ const options = [
         ],
     },
 ];
-const openNotification = (value) => {
-    notification.open({
-        message: "搜索成功！",
-        description: `将为您搜索 ${value} 该分类下的的文章.`,
-        icon: <SmileOutlined style={{ color: "#108ee9" }} />,
-    });
-};
-export default class ArticleSelect extends Component {
+
+export default class MySelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -104,10 +97,10 @@ export default class ArticleSelect extends Component {
     selectArticle = () => {
         let arrInfo = this.state.searchInfo.join("-");
         //成功
-        openNotification(arrInfo);
+        console.log("select 成功" + arrInfo);
     };
     render() {
-        const { type, placeholder } = this.props;
+        const { type, isClassify } = this.props;
         const { searchInfo } = this.state;
         const { selectValue } = this.props;
         // console.log(searchInfo);
@@ -121,7 +114,9 @@ export default class ArticleSelect extends Component {
                             style={{ width: "100%" }}
                             value={searchInfo}
                             options={options}
-                            placeholder={placeholder}
+                            placeholder={`按类别检索${
+                                isClassify ? "分类" : "文章"
+                            }`}
                             expandTrigger="hover"
                             //displayRender={this.displayRender}
                             onChange={this.onChange}

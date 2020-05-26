@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import style from "./ArticleForm.module.scss";
-import { Typography, Input, DatePicker, Button } from "antd";
-import ArticleSelect from "../../MyInput/article/ArticleSelect";
-import moment from "moment";
+import { Typography, Input, Button } from "antd";
+import MySelect from "../../MyInput/MySelect";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
-const dateFormat = "YYYY-MM-DD";
-
 export default class ArticleForm extends Component {
     state = {
-        id: "1",
+        id: 0,
         name: "",
         classifyList: [],
         content: "我是内容",
@@ -70,17 +68,21 @@ export default class ArticleForm extends Component {
                         <Title level={3}>{title}</Title>
                     </div>
                     <div className={style.fromBox}>
-                        <div className={style.inputBox}>
-                            <span>文章编号：</span>
-                            <div className={style.input}>
-                                <Input
-                                    name="id"
-                                    value={id}
-                                    onChange={(e) => this.changeInput(e)}
-                                    disabled
-                                ></Input>
+                        {id === 0 ? (
+                            <></>
+                        ) : (
+                            <div className={style.inputBox}>
+                                <span>文章编号：</span>
+                                <div className={style.input}>
+                                    <Input
+                                        name="id"
+                                        value={id}
+                                        onChange={(e) => this.changeInput(e)}
+                                        disabled
+                                    ></Input>
+                                </div>
                             </div>
-                        </div>
+                        )}
                         <div className={style.inputBox}>
                             <span>文章标题：</span>
                             <div className={style.input}>
@@ -94,14 +96,14 @@ export default class ArticleForm extends Component {
                         <div className={style.inputBox}>
                             <span>所属分类：</span>
                             <div className={style.input}>
-                                <ArticleSelect
+                                <MySelect
                                     selectValue={classifyList}
                                     type="select"
                                     placeholder="请选择分类"
                                     changeSelect={(list) =>
                                         this.changeSelect(list)
                                     }
-                                ></ArticleSelect>
+                                ></MySelect>
                             </div>
                         </div>
                         <div className={style.inputBox}>
@@ -116,39 +118,34 @@ export default class ArticleForm extends Component {
                             </div>
                         </div>
                         <div className={style.date}>
-                            <div className={style.dateBox}>
-                                <span>创建时间：</span>
-                                <div className={style.dateInput}>
-                                    <DatePicker
-                                        defaultValue={moment(
-                                            createTime,
-                                            dateFormat
-                                        )}
-                                        disabled
-                                    />
+                            {id === 0 ? (
+                                <></>
+                            ) : (
+                                <div className={style.dateBox}>
+                                    <span>创建时间：</span>
+                                    <div className={style.dateInput}>
+                                        {createTime}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                             <div className={style.dateBox}>
-                                <span>当前时间：</span>
+                                <span>修改时间：</span>
                                 <div className={style.dateInput}>
-                                    <DatePicker
-                                        defaultValue={moment(
-                                            editTime,
-                                            dateFormat
-                                        )}
-                                        disabled
-                                    />
+                                    {editTime}
                                 </div>
                             </div>
                         </div>
                         <div className={style.submit}>
                             <Button
+                                className={style.myButton}
                                 type="primary"
-                                block
                                 onClick={() => this.submit()}
                             >
                                 提交
                             </Button>
+                            <Link to={`/admin/article`}>
+                                <Button className={style.myButton}>取消</Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
