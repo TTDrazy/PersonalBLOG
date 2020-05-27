@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import AdminLayout from "../../../components/layouts/AdminLayout";
-import ArticleForm from "../../../components/MyForm/article/ArticleForm";
+import MyForm from "../../../components/MyForm/MyForm";
 
 export default class ArticleAdd extends Component {
     render() {
         return (
             <>
                 <AdminLayout>
-                    <ArticleForm></ArticleForm>
+                    <MyForm></MyForm>
                 </AdminLayout>
             </>
         );

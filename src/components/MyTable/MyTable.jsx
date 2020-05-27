@@ -11,7 +11,6 @@ class MyTable extends Component {
         tableList: this.props.tableList,
     };
     componentDidMount() {
-        console.log(this.props.tableList);
         this.setState({
             isLoading: false,
         });
@@ -32,7 +31,6 @@ class MyTable extends Component {
     render() {
         const { everyPageShowInfo, isClassify } = this.props;
         let { isLoading, tableList } = this.state;
-        // console.log(tableList)
         return (
             <>
                 <Table

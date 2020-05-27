@@ -10,14 +10,16 @@ import { Link } from "react-router-dom";
 
 class Manage extends Component {
     state = {
-        tableList:this.props.tableList,
+        tableList: this.props.tableList,
     };
     componentDidMount() {
         let list = this.props.tableList;
-        list.map((item) => {
-            item.createTime = this.timestampToTime(item.createTime);
-            item.editTime = this.timestampToTime(item.editTime);
-        });
+        if (`${list[0].createTime}`.length===10) {
+            list.map((item) => {
+                item.createTime = this.timestampToTime(item.createTime);
+                item.editTime = this.timestampToTime(item.editTime);
+            });
+        }
         this.setState({
             tableList: list,
         });
@@ -38,7 +40,6 @@ class Manage extends Component {
     }
     render() {
         const { isClassify } = this.props;
-        console.log(this.state.tableList)
         return (
             <div>
                 <AdminLayout>

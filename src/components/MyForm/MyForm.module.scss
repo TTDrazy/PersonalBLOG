@@ -6,20 +6,28 @@
     padding: 2% 5%;
     .formBox {
         display: table;
+        flex: 1;
+        margin: 0 20%;
         /*display: table时padding会失效*/
-        width: 800px;
         .row {
             display: table-row;
             /*display: table-row时margin、padding同时失效*/
             .column {
                 display: table-cell;
-                padding:10px 0 ;
+                padding: 2% 0;
                 /*display: table-cell时margin会失效*/
             }
             .label {
                 text-align: right;
+                width: 180px;
+                padding-right: 10px;
+                vertical-align: middle;
+            }
+            .date {
+                text-align: right;
             }
         }
+
         .select {
             min-width: 100px;
         }

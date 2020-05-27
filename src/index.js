@@ -15,7 +15,6 @@ ReactDOM.render(
     <Router>
         <Route path="/" />
         <Route path="/login" component={Login} />
-        <Route path="/admin" exact component={ArticleManage} />
         <Route path="/admin/article" exact component={ArticleManage} />
         <Route path="/admin/article/add" exact component={ArticleAdd} />
         <Route path="/admin/article/edit" exact component={ArticleEdit} />

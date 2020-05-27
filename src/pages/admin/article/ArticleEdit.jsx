@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AdminLayout from "../../../components/layouts/AdminLayout";
-import ArticleForm from "../../../components/MyForm/article/ArticleForm";
+import MyForm from "../../../components/MyForm/MyForm";
 export default class ArticleEdit extends Component {
     state = {
         classifyList: ["Web Front", "base", "CSS"],
@@ -15,10 +15,9 @@ export default class ArticleEdit extends Component {
         return (
             <>
                 <AdminLayout>
-                    <ArticleForm
-                        title="修改文章"
+                    <MyForm
                         list={this.state}
-                    ></ArticleForm>
+                    ></MyForm>
                 </AdminLayout>
             </>
         );

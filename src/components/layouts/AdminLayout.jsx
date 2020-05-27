@@ -82,21 +82,33 @@ class AdminLayout extends Component {
                             <Menu
                                 theme="dark"
                                 //defaultOpenKeys={["article", "personal"]}
-                                defaultSelectedKeys={["article"]}
+                                defaultSelectedKeys={["/admin/article"]}
+                                selectedKeys={[
+                                    this.props.history.location.pathname ===
+                                    "admin"
+                                        ? "/admin/article"
+                                        : this.props.history.location.pathname,
+                                ]}
                                 mode="inline"
                             >
                                 <Menu.Item
-                                    key="article"
+                                    key="/admin/article"
                                     icon={<FileTextOutlined />}
+                                    onClick={() =>
+                                        this.toRouter("/admin/article")
+                                    }
                                 >
-                                    <Link to="/admin/article">文章管理</Link>
+                                    文章管理
                                 </Menu.Item>
 
                                 <Menu.Item
-                                    key="classify"
+                                    key="/admin/classify"
                                     icon={<PartitionOutlined />}
+                                    onClick={() =>
+                                        this.toRouter("/admin/classify")
+                                    }
                                 >
-                                    <Link to="/admin/classify">分类管理</Link>
+                                    分类管理
                                 </Menu.Item>
                             </Menu>
                         </Sider>
@@ -120,27 +132,24 @@ class AdminLayout extends Component {
                                 }
                             )}
                         </div>
-
-                        <div className={style.avatar}>
-                            <Dropdown
-                                overlay={menu}
-                                placement="bottomCenter"
-                                overlayStyle={{
-                                    width: "180px",
-                                    padding: "5px 10px",
-                                }}
-                            >
+                        <Dropdown
+                            overlay={menu}
+                            placement="bottomRight"
+                            overlayStyle={{
+                                width: "180px",
+                                padding: "5px 10px",
+                            }}
+                        >
+                            <div className={style.avatar}>
                                 <img
                                     alt="头像"
                                     src={avatarImg}
-                                    className={[
-                                        style.avatarImage,
-                                        "ant-dropdown-link",
-                                    ]}
+                                    className={style.avatarImage}
                                     onClick={(e) => e.preventDefault()}
                                 ></img>
-                            </Dropdown>
-                        </div>
+                                <span className={style.avatarText}>Drazy</span>
+                            </div>
+                        </Dropdown>
                     </div>
                     <div className={style.right}>
                         <div className={style.content}>

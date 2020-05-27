@@ -44,7 +44,7 @@ class Login extends Component {
                 isAdmin: true,
             });
             message.success("登陆成功!即将跳转至后台管理页~");
-            this.props.history.push("/admin");
+            this.props.history.push("/admin/article");
         } else {
             message.warning("用户名或密码错误！");
         }
