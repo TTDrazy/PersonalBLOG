@@ -67,13 +67,15 @@ export default class ArticleForm extends Component {
                     <div className={style.title}>
                         <Title level={3}>{title}</Title>
                     </div>
-                    <div className={style.fromBox}>
+                    <div className={style.formBox}>
                         {id === 0 ? (
                             <></>
                         ) : (
-                            <div className={style.inputBox}>
-                                <span>文章编号：</span>
-                                <div className={style.input}>
+                            <div className={style.row}>
+                                <div className={[style.column, style.label]}>
+                                    文章编号：
+                                </div>
+                                <div className={style.column}>
                                     <Input
                                         name="id"
                                         value={id}
@@ -83,9 +85,11 @@ export default class ArticleForm extends Component {
                                 </div>
                             </div>
                         )}
-                        <div className={style.inputBox}>
-                            <span>文章标题：</span>
-                            <div className={style.input}>
+                        <div className={style.row}>
+                            <div className={[style.column, style.label]}>
+                                文章标题：
+                            </div>
+                            <div className={style.column}>
                                 <Input
                                     name="name"
                                     value={name}
@@ -93,9 +97,11 @@ export default class ArticleForm extends Component {
                                 ></Input>
                             </div>
                         </div>
-                        <div className={style.inputBox}>
-                            <span>所属分类：</span>
-                            <div className={style.input}>
+                        <div className={style.row}>
+                            <div className={[style.column, style.label]}>
+                                文章所属分类：
+                            </div>
+                            <div className={style.column}>
                                 <MySelect
                                     selectValue={classifyList}
                                     type="select"
@@ -106,9 +112,11 @@ export default class ArticleForm extends Component {
                                 ></MySelect>
                             </div>
                         </div>
-                        <div className={style.inputBox}>
-                            <span>文章内容：</span>
-                            <div className={style.input}>
+                        <div className={style.row}>
+                            <div className={[style.column, style.label]}>
+                                文章内容：
+                            </div>
+                            <div className={style.column}>
                                 <TextArea
                                     rows={6}
                                     name="content"
@@ -117,35 +125,44 @@ export default class ArticleForm extends Component {
                                 />
                             </div>
                         </div>
-                        <div className={style.date}>
-                            {id === 0 ? (
-                                <></>
-                            ) : (
-                                <div className={style.dateBox}>
-                                    <span>创建时间：</span>
-                                    <div className={style.dateInput}>
-                                        {createTime}
+
+                        {id === 0 ? (
+                            <></>
+                        ) : (
+                            <div className={style.row}>
+                                <div className={style.column}></div>
+                                <div className={[style.column, style.label]}>
+                                    <div>
+                                        创建时间：{createTime}
                                     </div>
                                 </div>
-                            )}
-                            <div className={style.dateBox}>
-                                <span>修改时间：</span>
-                                <div className={style.dateInput}>
-                                    {editTime}
+                            </div>
+                        )}
+                        <div className={style.row}>
+                            <div className={style.column}></div>
+                            <div className={[style.column, style.label]}>
+                                <div>
+                                    修改时间：{editTime}
                                 </div>
                             </div>
                         </div>
-                        <div className={style.submit}>
-                            <Button
-                                className={style.myButton}
-                                type="primary"
-                                onClick={() => this.submit()}
-                            >
-                                提交
-                            </Button>
-                            <Link to={`/admin/article`}>
-                                <Button className={style.myButton}>取消</Button>
-                            </Link>
+
+                        <div className={style.row}>
+                            <div className={style.column}></div>
+                            <div className={style.column}>
+                                <Button
+                                    className={style.myButton}
+                                    type="primary"
+                                    onClick={() => this.submit()}
+                                >
+                                    提交
+                                </Button>
+                                <Link to={`/admin/article`}>
+                                    <Button className={style.myButton}>
+                                        取消
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,49 +1,31 @@
 .container {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    // flex-direction: column;
     padding: 2% 5%;
-    .fromBox {
-        .inputBox {
-            display: flex;
-            //justify-content: space-between;
-            padding: 15px 0;
-            span {
-                width: 30%;
-                font-size: 14px;
-                text-align: right;
-                padding-top: 5px;
+    .formBox {
+        display: table;
+        /*display: table时padding会失效*/
+        width: 800px;
+        .row {
+            display: table-row;
+            /*display: table-row时margin、padding同时失效*/
+            .column {
+                display: table-cell;
+                padding:10px 0 ;
+                /*display: table-cell时margin会失效*/
             }
-            .input {
-                //width: 40%;
-                //max-width: 500px;
+            .label {
+                text-align: right;
             }
         }
         .select {
-            width: 70%;
+            min-width: 100px;
         }
-        .date {
-            align-items: center;
-            .dateBox {
-                display: flex;
-                justify-content: flex-end;
-                padding: 10px 0;
-                span {
-                    font-size: 14px;
-                    padding-right: 10px;
-                }
-                .dateInput {
-                    // margin-right:15px;
-                }
-            }
-        }
-        .submit {
-            display: flex;
-            padding-left: 30%;
-            padding-top: 20px;
-            .myButton{
-                margin-right:10px;
-            }
+
+        .myButton {
+            margin-right: 10px;
         }
     }
 }

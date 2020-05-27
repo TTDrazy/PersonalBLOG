@@ -100,7 +100,7 @@ export default class MySelect extends Component {
         console.log("select 成功" + arrInfo);
     };
     render() {
-        const { type, isClassify } = this.props;
+        const { type, isClassify, placeholder } = this.props;
         const { searchInfo } = this.state;
         const { selectValue } = this.props;
         // console.log(searchInfo);
@@ -114,9 +114,13 @@ export default class MySelect extends Component {
                             style={{ width: "100%" }}
                             value={searchInfo}
                             options={options}
-                            placeholder={`按类别检索${
-                                isClassify ? "分类" : "文章"
-                            }`}
+                            placeholder={
+                                placeholder
+                                    ? placeholder
+                                    : `按类别检索${
+                                          isClassify ? "分类" : "文章"
+                                      }`
+                            }
                             expandTrigger="hover"
                             //displayRender={this.displayRender}
                             onChange={this.onChange}

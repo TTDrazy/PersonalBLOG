@@ -124,7 +124,7 @@ class AdminLayout extends Component {
                         <div className={style.avatar}>
                             <Dropdown
                                 overlay={menu}
-                                placement="bottomRight"
+                                placement="bottomCenter"
                                 overlayStyle={{
                                     width: "180px",
                                     padding: "5px 10px",
