@@ -18,39 +18,23 @@ class Login extends Component {
             [e.target.name]: e.target.value,
         });
     };
-    checkInfo() {
+
+    onFinish = (values) => {
         const { userName, password } = this.state;
-        if (!userName) {
-            message.warning("用户名不能为空!");
-        } else if (!password) {
-            message.warning("密码不能为空!");
-        } else if (userName === "Drazy" && password === "111") {
+        if (userName === "Drazy" && password === "111") {
             this.setState({
                 isAdmin: true,
             });
-        } else {
-            message.warning("用户名或密码错误！");
-        }
-    }
-    //跳转至 admin 页面
-    toAdmin = () => {
-        const { userName, password } = this.state;
-        if (!userName) {
-            message.warning("用户名不能为空!");
-        } else if (!password) {
-            message.warning("密码不能为空!");
-        } else if (userName === "Drazy" && password === "111") {
-            this.setState({
-                isAdmin: true,
-            });
+            if (values.remember) {
+                localStorage.setItem("userName", userName);
+                localStorage.setItem("password", password);
+            }
             message.success("登陆成功!即将跳转至后台管理页~");
+            //跳转至 admin 页面
             this.props.history.push("/admin/article");
         } else {
             message.warning("用户名或密码错误！");
         }
-    };
-    onFinish = (values) => {
-        console.log("Success:", values);
     };
 
     onFinishFailed = (errorInfo) => {
@@ -58,7 +42,7 @@ class Login extends Component {
     };
 
     render() {
-        const { userName, password } = this.state;
+        const { userName, password, checked } = this.state;
         return (
             <>
                 <div className={style.container}>
@@ -84,9 +68,7 @@ class Login extends Component {
                                     <Form
                                         className={style.form}
                                         name="basic"
-                                        initialValues={{
-                                            remember: true,
-                                        }}
+                                        initialValues={{ remember: true }}
                                         onFinish={this.onFinish}
                                         onFinishFailed={this.onFinishFailed}
                                     >
@@ -109,7 +91,6 @@ class Login extends Component {
                                                 placeholder="用户名"
                                                 prefix={<UserOutlined />}
                                             />
-                                            <span></span>
                                         </Form.Item>
                                         <Form.Item
                                             name="password"
@@ -130,9 +111,9 @@ class Login extends Component {
                                                 placeholder="密码"
                                                 prefix={<LockOutlined />}
                                             />
-                                            <span></span>
                                         </Form.Item>
 
+                                        {/* Form.Item 里的 checkBox 不能通过常规赋值 checked 属性 */}
                                         <Form.Item
                                             className={style.checkboxBox}
                                             name="remember"
@@ -146,9 +127,9 @@ class Login extends Component {
                                         </Form.Item>
                                         <Form.Item className={style.buttonBox}>
                                             <Button
+                                                htmlType="submit"
                                                 type="primary"
                                                 className={style.login}
-                                                onClick={() => this.toAdmin()}
                                             >
                                                 登录
                                             </Button>
