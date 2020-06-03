@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 
 export default class App {
     constructor({ port, routes }) {
@@ -18,6 +19,9 @@ export default class App {
             res.header("Content-Type", "application/json;charset=utf-8");
             next();
         });
+        //支持 req.body 来获取数据
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: false }));
     }
     //初始化添加其他路由信息
     initialRouter() {
