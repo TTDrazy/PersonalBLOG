@@ -1,8 +1,8 @@
 import dbquery from "../modules/DBConnection";
 
-let dbHelper = {
+class dbHelper {
     //去数据库查询是一个异步行为
-    query: (sql, resultInfo) => {
+    query = (sql, resultInfo) => {
         return new Promise((resolve, reject) => {
             //调用公用的 dbquery 具体方法
             dbquery(sql, (error, result) => {
@@ -18,6 +18,6 @@ let dbHelper = {
                 }
             });
         });
-    },
-};
+    };
+}
 export default dbHelper;

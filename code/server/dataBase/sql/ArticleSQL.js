@@ -1,3 +1,4 @@
+//因为是返回值都是常量字符串这种，所以可以不用 class 类的写法
 let ArticleSQL = {
     qeuryAll: () => {
         return `select * from article`;
