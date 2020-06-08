@@ -1,3 +1,13 @@
+## 2020/06/08
+
+1. 修正了 getArticleById 的 router 层中没有以正常逻辑进入 VO 
+2. 修改了所有的 SQL 及表字段等全部为小写
+3. 明日计划：
+    - 用递归的方式在 services 层写出 classify 应返回的 classifyList
+    - 完成剩余的 classify 部分的增、删、改、查
+
+---
+
 ## 2020/06/05
 
 1. 完成 Classify 部分

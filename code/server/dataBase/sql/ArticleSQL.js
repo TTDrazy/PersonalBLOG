@@ -9,14 +9,14 @@ let ArticleSQL = {
     add: (data) => {
         let { name, classifyId, isShow, createTime, content } = data;
         return `insert into article
-        (name,classifyId,isShow,createTime,content)
+        (name,classifyid,isshow,createtime,content)
         values
         ('${name}', ${classifyId}, ${isShow}, '${createTime}', '${content}')`;
     },
     edit: (data) => {
         let { id, name, classifyId, isShow, editTime, content } = data;
         return `update article 
-        set name = '${name}',classifyId = ${classifyId},isShow = ${isShow},editTime = '${editTime}',content = '${content}'
+        set name = '${name}',classifyid = ${classifyId},isshow = ${isShow},edittime = '${editTime}',content = '${content}'
         where id= ${id};`;
     },
     removeById: (id) => {

@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
     let data = await new ArticleService().getAll();
     let list = [];
     data.map((item) => {
-        console.log(item);
         let itemModel = new ArticleVO(item);
         list.push(itemModel);
     });
@@ -23,7 +22,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     let data = await new ArticleService().getArticleById(id);
     let list;
-    if (!!data.id) {
+    if (!!data[0].id) {
         list = new ArticleVO(data[0]);
     } else {
         list = data;

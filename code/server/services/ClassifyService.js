@@ -3,7 +3,9 @@ import ClassifySQL from "../dataBase/sql/ClassifySQL";
 
 class ClassifyService {
     getAll = () => {
-        let result = new dbHelper().query(ClassifySQL.qeuryAll());
+        let result;
+        let allData = new dbHelper().query(ClassifySQL.qeuryAll());
+        let 
         return result;
     };
     getArticleById = (id) => {

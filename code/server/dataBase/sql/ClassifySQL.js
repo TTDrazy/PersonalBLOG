@@ -3,20 +3,23 @@ let ClassifySQL = {
     qeuryAll: () => {
         return `select * from classify`;
     },
+    getNameById: (id) => {
+        return `select name,lastId from classify where id = ${id}`;
+    },
     getById: (id) => {
         return `select * from classify where id = ${id}`;
     },
     add: (data) => {
-        let { name, classifyList, isShow, createTime} = data;
+        let { name, classifyList, isShow, createTime } = data;
         return `insert into classify
-        (name,classifyList,isShow,createTime)
+        (name,classifylist,isshow,createtime)
         values
         ('${name}', '${classifyList}', ${isShow}, '${createTime}')`;
     },
     edit: (data) => {
-        let { id, name, classifyList, isShow, editTime} = data;
+        let { id, name, classifyList, isShow, editTime } = data;
         return `update classify 
-        set name = '${name}',classifyList = ${classifyList},isShow = ${isShow},editTime = '${editTime}'
+        set name = '${name}',classifylist = ${classifyList},isshow = ${isShow},edittime = '${editTime}'
         where id= ${id};`;
     },
     removeById: (id) => {
