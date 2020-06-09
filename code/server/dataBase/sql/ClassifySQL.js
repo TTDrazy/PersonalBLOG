@@ -10,16 +10,16 @@ let ClassifySQL = {
         return `select * from classify where id = ${id}`;
     },
     add: (data) => {
-        let { name, classifyList, isShow, createTime } = data;
+        let { name, lastid, isshow, createtime } = data;
         return `insert into classify
-        (name,classifylist,isshow,createtime)
+        (name,lastid,isshow,createtime)
         values
-        ('${name}', '${classifyList}', ${isShow}, '${createTime}')`;
+        ('${name}', '${lastid}', ${isshow}, '${createtime}')`;
     },
     edit: (data) => {
-        let { id, name, classifyList, isShow, editTime } = data;
+        let { id, name, lastid, isshow, edittime } = data;
         return `update classify 
-        set name = '${name}',classifylist = ${classifyList},isshow = ${isShow},edittime = '${editTime}'
+        set name = '${name}',lastid = ${lastid},isshow = ${isshow},edittime = '${edittime}'
         where id= ${id};`;
     },
     removeById: (id) => {

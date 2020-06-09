@@ -8,7 +8,6 @@ let router = express.Router();
 
 router.get("/", async (req, res) => {
     let data = await new ArticleService().getAll();
-    console.log(data);
     let list = [];
     data.map((item) => {
         let itemModel = new ArticleVO(item);
@@ -23,7 +22,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     let data = await new ArticleService().getArticleById(id);
     let list;
-    if (!!data[0].id) {
+    if (!!data[0] && !!data[0].id) {
         list = new ArticleVO(data[0]);
     } else {
         list = data;
@@ -41,8 +40,13 @@ router.post("/", async (req, res) => {
 
 router.put("/", async (req, res) => {
     // 利用 body-parser 从 req.body 中取数据
-    const articleData = new EditDTO(req.body);
-    let data = await new ArticleService().editArticle(articleData);
+    let data;
+    if (!!req.body && !!req.body.id) {
+        const articleData = new EditDTO(req.body);
+        data = await new ArticleService().editArticle(articleData);
+    } else {
+        data = [];
+    }
     let result = new Result(data);
     res.send(result);
 });

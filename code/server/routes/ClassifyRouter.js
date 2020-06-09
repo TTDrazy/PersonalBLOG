@@ -6,14 +6,14 @@ let router = express.Router();
 
 router.get("/", async (req, res) => {
     let data = await new ClassifyService().getAll();
-    let list = [];
-    data.map((item) => {
-        console.log(item);
-        let itemModel = new ClassifyVO(item);
-        list.push(itemModel);
-    });
-    let result = new Result(list);
-    res.send(result);
+    console.log(data);
+    // let list = [];
+    // data.map((item) => {
+    //     let itemModel = new ClassifyVO(item);
+    //     list.push(itemModel);
+    // });
+    // let result = new Result(list);
+    //res.send(result);
 });
 
 export default router;

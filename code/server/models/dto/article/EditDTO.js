@@ -11,9 +11,9 @@ export default class EditDTO {
     }) {
         this.id = id;
         this.name = name;
-        this.classifyId = classifyId;
+        this.classifyid = classifyId;
         this.content = content;
-        this.isShow = isShow ? 1 : 0;
-        this.editTime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
+        this.isshow = isShow ? 1 : 0;
+        this.edittime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
     }
 }

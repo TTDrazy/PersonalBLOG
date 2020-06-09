@@ -7,19 +7,19 @@ export default class ArticleVO {
     constructor({
         id,
         name,
-        classifyList,
-        isShow,
-        createTime,
-        editTime,
+        classifylist,
+        isshow,
+        createtime,
+        edittime,
     }) {
         this.id = id;
         this.name = name;
-        this.classifyList = classifyList;
-        this.isShow = isShow ? true : false;
-        this.createTime = createTime
-            ? this.transformDate(createTime)
-            : createTime;
-        this.editTime = editTime ? this.transformDate(editTime) : editTime;
+        this.classifyList = classifylist;
+        this.isShow = isshow ? true : false;
+        this.createTime = createtime
+            ? this.transformDate(createtime)
+            : createtime;
+        this.editTime = edittime ? this.transformDate(edittime) : edittime;
     }
 
     transformDate = (date) => {

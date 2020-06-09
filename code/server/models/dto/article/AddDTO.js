@@ -9,9 +9,9 @@ export default class AddDTO {
         isShow = 1,
     }) {
         this.name = name;
-        this.classifyId = classifyId;
+        this.classifyid = classifyId;
         this.content = content;
-        this.isShow = isShow ? 1 : 0;
-        this.createTime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
+        this.isshow = isShow ? 1 : 0;
+        this.createtime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
     }
 }
