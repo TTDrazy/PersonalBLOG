@@ -2,11 +2,14 @@ import dbHelper from "../dataBase/modules/DBHelper";
 import ClassifySQL from "../dataBase/sql/ClassifySQL";
 
 class ClassifyService {
+    getClassifyList = ()=>{
+
+    };
     getAll = () => {
         let result;
         let allData = new dbHelper().query(ClassifySQL.qeuryAll());
-        let 
-        return result;
+        
+        return allData;
     };
     getArticleById = (id) => {
         let result = new dbHelper().query(ClassifySQL.getById(id));

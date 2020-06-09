@@ -8,6 +8,7 @@ let router = express.Router();
 
 router.get("/", async (req, res) => {
     let data = await new ArticleService().getAll();
+    console.log(data);
     let list = [];
     data.map((item) => {
         let itemModel = new ArticleVO(item);
