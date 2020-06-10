@@ -2,22 +2,33 @@ import dbHelper from "../dataBase/modules/DBHelper";
 import ClassifySQL from "../dataBase/sql/ClassifySQL";
 
 class ClassifyService {
-    getAll = async () => {
-        let result;
-        let lastId = null;
-        //let allData = await new dbHelper().query(ClassifySQL.qeuryAll());
-        let allData = [{id:1,name:'name1',lastid:null},{id:2,name:'name2',lastid:1},{id:3,name:'name3',lastid:2}];
-        result = allData.map((item) => {
-            item.classifyList = [];
-            lastId = item.lastid;
-            while (!!lastId) {
-                let data = this.getClassifyById(lastId);
-                let { name, lastid } = data;
-                item.classifyList.push(name);
-                lastId = lastid;
+    getNameInfoById = (allData, lastid) => {
+        let info = {};
+        allData.map((item) => {
+            if (item.id === lastid) {
+                info["name"] = item.name;
+                info["lastid"] = item.lastid;
             }
         });
-        //console.log(xx);
+        return info;
+    };
+    getClassifyList = (allData) => {
+        let lastId = null;
+        allData.map((item) => {
+            item.classifylist = [];
+            lastId = item.lastid;
+            while (!!lastId) {
+                let data = this.getNameInfoById(allData, lastId);
+                let { name, lastid } = data;
+                item.classifylist.unshift(name);
+                lastId = lastid;
+            }
+            item.classifylist.push(item.name);
+        });
+        return allData;
+    };
+    getAll = () => {
+        let result = new dbHelper().query(ClassifySQL.qeuryAll());
         return result;
     };
     getClassifyById = (id) => {

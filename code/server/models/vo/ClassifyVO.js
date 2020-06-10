@@ -4,22 +4,16 @@ import { format } from "silly-datetime";
 
 //转换 isShow 和 createTime 以及 editTime
 export default class ArticleVO {
-    constructor({
-        id,
-        name,
-        classifylist,
-        isshow,
-        createtime,
-        edittime,
-    }) {
+    constructor({ id, name, lastid,isshow, createtime, edittime, classifylist }) {
         this.id = id;
         this.name = name;
-        this.classifyList = classifylist;
+        this.lastId = lastid;
         this.isShow = isshow ? true : false;
         this.createTime = createtime
             ? this.transformDate(createtime)
             : createtime;
         this.editTime = edittime ? this.transformDate(edittime) : edittime;
+        this.classifyList = classifylist;
     }
 
     transformDate = (date) => {
