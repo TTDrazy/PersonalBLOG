@@ -14,7 +14,7 @@ let ClassifySQL = {
         return `insert into classify
         (name,lastid,isshow,createtime)
         values
-        ('${name}', '${lastid}', ${isshow}, '${createtime}')`;
+        ('${name}', ${lastid}, ${isshow}, '${createtime}')`;
     },
     edit: (data) => {
         let { id, name, lastid, isshow, edittime } = data;

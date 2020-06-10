@@ -1,6 +1,6 @@
 ## 2020/06/10
 1. 在 services 层写出 classify 应返回的 classifyList
-2. 
+2. 完成剩余的 classify 部分的增、删、改、查
 
 ---
 
@@ -9,7 +9,7 @@
 2. 暂存问题：
     - 昨日将数据库所有内容改为小写后原 Article 部分的 VO 出现了部分字段不显示的问题 √ 
     - 暂未完成在 services 层写出 classify 应返回的 classifyList √
-    - 暂未完成剩余的 classify 部分的增、删、改、查
+    - 暂未完成剩余的 classify 部分的增、删、改、查 √
 
 ---
 

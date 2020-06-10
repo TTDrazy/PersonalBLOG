@@ -21,9 +21,9 @@ router.get("/:id", async (req, res) => {
     //从 url -> params 中取 id
     const id = req.params.id;
     let data = await new ArticleService().getArticleById(id);
-    let list;
+    let list = [];
     if (!!data[0] && !!data[0].id) {
-        list = new ArticleVO(data[0]);
+        list.push(new ArticleVO(data[0]));
     } else {
         list = data;
     }
@@ -55,9 +55,9 @@ router.delete("/:id", async (req, res) => {
     //从 url -> params 中取 id
     const id = req.params.id;
     let data = await new ArticleService().removeArticle(id);
-    let list;
+    let list = [];
     if (!!data.id) {
-        list = new ArticleVO(data[0]);
+        list.push(new ArticleVO(data[0]));
     } else {
         list = data;
     }

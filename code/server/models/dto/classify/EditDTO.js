@@ -5,8 +5,8 @@ export default class EditDTO {
     constructor({ id, name, lastId, isShow }) {
         this.id = id;
         this.name = name;
-        this.lastId = lastId;
-        this.isShow = isShow ? 1 : 0;
-        this.editTime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
+        this.lastid = lastId;
+        this.isshow = isShow ? 1 : 0;
+        this.edittime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
     }
 }
