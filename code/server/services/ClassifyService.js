@@ -27,6 +27,17 @@ class ClassifyService {
         });
         return allData;
     };
+    getChildrenTree(allData, parentId, classifyInfo) {
+        let childrenList = allData.filter((item) => item.lastId == parentId);
+        if (childrenList.length > 0) {
+            classifyInfo.children = [];
+            childrenList.map((item) => {
+                this.getChildrenTree(allData, item.id, item);
+            });
+            classifyInfo.children = childrenList;
+        }
+        return classifyInfo;
+    }
     getAll = () => {
         let result = new dbHelper().query(ClassifySQL.qeuryAll());
         return result;

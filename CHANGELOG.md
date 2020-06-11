@@ -1,3 +1,8 @@
+## 2020/06/11
+1. 新增了 Classify 部分的返回前端需要 options 的 classifyTree
+2. 研究 JSDoc
+---
+
 ## 2020/06/10
 1. 在 services 层写出 classify 应返回的 classifyList
 2. 完成剩余的 classify 部分的增、删、改、查

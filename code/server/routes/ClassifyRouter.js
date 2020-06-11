@@ -8,13 +8,31 @@ let router = express.Router();
 
 router.get("/", async (req, res) => {
     let allData = await new ClassifyService().getAll();
-    let data =await new ClassifyService().getClassifyList(allData);
+    let data = await new ClassifyService().getClassifyList(allData);
     let list = [];
     data.map((item) => {
         let itemModel = new ClassifyVO(item);
         list.push(itemModel);
     });
     let result = new Result(list);
+    res.send(result);
+});
+router.get("/tree", async (req, res) => {
+    let allData = [];
+    let list = await new ClassifyService().getAll();
+    list.map((item) => {
+        let itemModel = new ClassifyVO(item);
+        allData.push(itemModel);
+    });
+    let classifyInfo = allData.filter((item) => item.lastid == null)[0];
+    let data = [
+        new ClassifyService().getChildrenTree(
+            allData,
+            classifyInfo.id,
+            classifyInfo
+        ),
+    ];
+    let result = new Result(data);
     res.send(result);
 });
 router.get("/:id", async (req, res) => {

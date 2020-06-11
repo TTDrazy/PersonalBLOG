@@ -4,7 +4,7 @@ import { format } from "silly-datetime";
 
 //转换 isShow 和 createTime 以及 editTime
 export default class ArticleVO {
-    constructor({ id, name, lastid,isshow, createtime, edittime, classifylist }) {
+    constructor({ id, name, lastid,isshow, createtime, edittime, classifylist=[] }) {
         this.id = id;
         this.name = name;
         this.lastId = lastid;
