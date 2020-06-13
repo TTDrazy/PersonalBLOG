@@ -13,8 +13,8 @@ class Result {
      */
     constructor(data) {
         this.status = this.getStatus(data);
-        this.info = data.message ? data.message : "";
-        this.message = data;
+        this.message = data.message ? data.message : "";
+        this.data = data;
     }
     /**
      * 判断 Result.status 的状态码

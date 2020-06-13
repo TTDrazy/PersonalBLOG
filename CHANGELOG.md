@@ -1,3 +1,7 @@
+## 2020/06/13
+1. 修改了返回 Result 的格式
+---
+
 ## 2020/06/11
 1. 新增了 Classify 部分的返回前端需要 options 的 classifyTree
 2. 研究 JSDoc
