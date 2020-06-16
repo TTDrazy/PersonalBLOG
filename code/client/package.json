@@ -10,6 +10,8 @@
         "antd": "^4.2.4",
         "axios": "^0.19.2",
         "craco-less": "^1.16.0",
+        "highlight": "^0.2.4",
+        "marked": "^1.1.0",
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
