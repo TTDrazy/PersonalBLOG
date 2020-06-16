@@ -10,11 +10,10 @@ import ArticleEdit from "./pages/admin/article/ArticleEdit";
 import ClassifyManage from "./pages/admin/classify/ClssifyManage";
 import ClassifyAdd from "./pages/admin/classify/ClassifyAdd";
 import ClassifyEdit from "./pages/admin/classify/ClassifyEdit";
-import MyMarkdown from "./components/MyMarkdown/MyMarkdown";
 
 ReactDOM.render(
     <Router>
-        <Route path="/" component={MyMarkdown}/>
+        <Route path="/"/>
         <Route path="/login" component={Login} />
         <Route path="/admin/article" exact component={ArticleManage} />
         <Route path="/admin/article/add" exact component={ArticleAdd} />

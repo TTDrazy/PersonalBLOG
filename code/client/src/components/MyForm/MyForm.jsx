@@ -3,6 +3,7 @@ import style from "./MyForm.module.scss";
 import { Input, Button, Radio, message } from "antd";
 import MySelect from "../MyInput/MySelect";
 import { Link, withRouter } from "react-router-dom";
+import MyMarkdown from "../MyMarkdown/MyMarkdown";
 
 const { TextArea } = Input;
 
@@ -168,12 +169,13 @@ class MyForm extends Component {
                                         `${style.column} ${style.inputBox}`,
                                     ]}
                                 >
-                                    <TextArea
+                                    {/* <TextArea
                                         rows={6}
                                         name="content"
                                         value={content}
                                         onChange={(e) => this.changeInput(e)}
-                                    />
+                                    /> */}
+                                    <MyMarkdown></MyMarkdown>
                                 </div>
                             </div>
                         )}
