@@ -7,6 +7,8 @@ import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 hljs.registerLanguage("javascript", javascript);
 
+const { TextArea } = Input;
+
 const escapeMap = {
     "&": "&amp;",
     "<": "&lt;",
@@ -14,10 +16,17 @@ const escapeMap = {
     '"': "&quot;",
     "'": "&#39;",
 };
+// 将需要转换的字符通过上面 escapeMap 的枚举进行转换
 let escapeForHTML = (input) =>
     input.replace(/([&<>'"])/g, (char) => escapeMap[char]);
-const { TextArea } = Input;
 
+
+/**
+ * Markdown + highlight 形成左书写右预览两栏的 md 组件
+ *
+ * @class MyMarkdown
+ * @extends {Component}
+ */
 class MyMarkdown extends Component {
     constructor(props) {
         super(props);
@@ -64,7 +73,7 @@ class MyMarkdown extends Component {
             <>
                 <div className={style.divMarkdown}>
                     <TextArea
-                        rows={12}
+                        rows={20}
                         className={style.left}
                         onChange={this.handleMarkdownChange.bind(this)}
                         value={this.state.mdTextarea}
