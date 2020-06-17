@@ -1,16 +1,17 @@
-## 2020/06/16
-1. 利用 marked + hightlight 中间键完成了在前端的后台管理页面的 markdown 部分
-2. 明日计划：
-    - 仔细研究昨日的 markdown + hightlight ，做好透传数据接收，并加上注释
-    - 根据 md 文件修改数据库 article 部分字段和格式
+## 2020/06/17
+1. 仔细研究昨日的 markdown + hightlight ，做好透传数据接收，并加上注释
+2. 根据 md 文件修改数据库 article 部分字段和格式并修改后台接口
+3. 明日计划：
+    - 走通前端 Article 部分的所有增删改查接口
+    - 走通前端 Classify 部分的所有增删改查接口
 
 ---
 
 ## 2020/06/16
 1. 利用 marked + hightlight 中间键完成了在前端的后台管理页面的 markdown 部分
 2. 明日计划：
-    - 仔细研究昨日的 markdown + hightlight ，做好透传数据接收，并加上注释
-    - 根据 md 文件修改数据库 article 部分字段和格式
+    - 仔细研究昨日的 markdown + hightlight ，做好透传数据接收，并加上注释 √
+    - 根据 md 文件修改数据库 article 部分字段和格式 √ 
 
 ---
 

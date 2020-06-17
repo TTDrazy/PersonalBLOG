@@ -7,7 +7,8 @@ export default class AddDTO {
      * @constructor
      * @param {string} name - article 的 name，默认值为 "默认"
      * @param {number} classifyId - article 的 classifyid，默认值为 1
-     * @param {string} content - article 的 content，默认值为 "我是内容"
+     * @param {string} mdtextarea - article 的 mdtextarea，默认值为 "我是内容"
+     * @param {string} mdcontent - article 的 mdcontent，实质为 marked(mdtextarea)
      * @param {number} isShow - article 的 isshow，默认值为 1；传入 true 自动转换为 1 ，false 自动转换为 0
      *
      * article 的 createtime 自动取当前时间并转为数据库存储的 datetime 格式
@@ -16,12 +17,14 @@ export default class AddDTO {
     constructor({
         name = "默认",
         classifyId = 1,
-        content = "我是内容",
+        mdTextarea = "我是内容",
+        mdContent = "<h1>我是内容</h1>",
         isShow = 1,
     }) {
         this.name = name;
         this.classifyid = classifyId;
-        this.content = content;
+        this.mdtextarea = mdTextarea;
+        this.mdcontent = mdContent;
         this.isshow = isShow ? 1 : 0;
         this.createtime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
     }

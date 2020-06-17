@@ -7,16 +7,31 @@ let ArticleSQL = {
         return `select * from article where id = ${id}`;
     },
     add: (data) => {
-        let { name, classifyid, isshow, createtime, content } = data;
+        let {
+            name,
+            classifyid,
+            isshow,
+            createtime,
+            mdtextarea,
+            mdcontent,
+        } = data;
         return `insert into article
-        (name,classifyid,isshow,createtime,content)
+        (name,classifyid,isshow,createtime,mdtextarea,mdcontent)
         values
-        ('${name}', ${classifyid}, ${isshow}, '${createtime}', '${content}')`;
+        ('${name}', ${classifyid}, ${isshow}, '${createtime}', '${mdtextarea}','${mdcontent}')`;
     },
     edit: (data) => {
-        let { id, name, classifyid, isshow, edittime, content } = data;
+        let {
+            id,
+            name,
+            classifyid,
+            isshow,
+            edittime,
+            mdtextarea,
+            mdcontent,
+        } = data;
         return `update article 
-        set name = '${name}',classifyid = ${classifyid},isshow = ${isshow},edittime = '${edittime}',content = '${content}'
+        set name = '${name}',classifyid = ${classifyid},isshow = ${isshow},edittime = '${edittime}',mdtextarea = '${mdtextarea}',mdcontent = '${mdcontent}'
         where id= ${id};`;
     },
     removeById: (id) => {

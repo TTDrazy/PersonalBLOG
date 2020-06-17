@@ -5,8 +5,6 @@ import MySelect from "../MyInput/MySelect";
 import { Link, withRouter } from "react-router-dom";
 import MyMarkdown from "../MyMarkdown/MyMarkdown";
 
-const { TextArea } = Input;
-
 class MyForm extends Component {
     state = {
         isClassify: this.props.isClassify,
@@ -17,6 +15,8 @@ class MyForm extends Component {
         createTime: "2020-05-22",
         editTime: "2020-05-23",
         isShow: true,
+        mdTextarea: "",
+        mdContent: "",
     };
     componentDidMount() {
         if (!!this.props.list) {
@@ -27,6 +27,8 @@ class MyForm extends Component {
                 content,
                 createTime,
                 editTime,
+                mdTextarea,
+                mdContent,
             } = this.props.list;
             this.setState({
                 id,
@@ -35,10 +37,23 @@ class MyForm extends Component {
                 content,
                 createTime,
                 editTime,
+                mdTextarea,
+                mdContent,
             });
         }
     }
-
+    /**
+     * 获取 MyMarkdown 组件中的 mdTextarea 及 mdContent
+     *
+     * @memberof MyForm
+     */
+    getMd = (mdState) => {
+        const { mdTextarea, mdContent } = mdState;
+        this.setState({
+            mdTextarea,
+            mdContent,
+        });
+    };
     onChange = (e) => {
         console.log("isShow", e.target.value);
         this.setState({
@@ -67,7 +82,7 @@ class MyForm extends Component {
                 `您已成功修改此${isClassify ? "分类" : "篇文章"}！`
             );
         }
-
+        // 跳转路由
         this.props.history.push(
             `/admin/${isClassify ? "classify" : "article"}`
         );
@@ -78,13 +93,11 @@ class MyForm extends Component {
             isClassify,
             id,
             name,
-            content,
             classifyList,
             createTime,
             editTime,
             isShow,
         } = this.state;
-        console.log(isClassify);
         return (
             <>
                 <div className={style.container}>
@@ -169,13 +182,10 @@ class MyForm extends Component {
                                         `${style.column} ${style.inputBox}`,
                                     ]}
                                 >
-                                    {/* <TextArea
-                                        rows={6}
-                                        name="content"
-                                        value={content}
-                                        onChange={(e) => this.changeInput(e)}
-                                    /> */}
-                                    <MyMarkdown></MyMarkdown>
+                                    <MyMarkdown
+                                        rows="15"
+                                        getMd={this.getMd}
+                                    ></MyMarkdown>
                                 </div>
                             </div>
                         )}

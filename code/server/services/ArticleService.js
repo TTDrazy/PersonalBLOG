@@ -26,7 +26,7 @@ class ArticleService {
     };
     /**
      * 添加 articleData 的数据进入数据库
-     * @param {object} articleData - 包含有 name, classifyid, isshow, createtime, content 的 article AddDTO 对象
+     * @param {object} articleData - 包含有 name, classifyid, isshow, createtime, mdtextarea, mdcontent 的 article AddDTO 对象
      * @return {promise} 包含添加该条 article 结果的 Promise
      * @memberof ArticleService
      */
@@ -34,9 +34,9 @@ class ArticleService {
         let result = new dbHelper().query(ArticleSQL.add(articleData));
         return result;
     };
-     /**
+    /**
      * 在数据库中修改 id 为 articleData.id 的 article 的数据
-     * @param {object} articleData - 包含有 id, name, classifyid, isshow, edittime, content  的 article EditDTO 对象
+     * @param {object} articleData - 包含有 id, name, classifyid, isshow, edittime, mdtextarea, mdcontent  的 article EditDTO 对象
      * @return {promise} 包含修改该条 article 结果的 Promise
      * @memberof ArticleService
      */
