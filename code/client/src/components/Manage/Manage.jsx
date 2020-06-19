@@ -14,19 +14,27 @@ class Manage extends Component {
     };
     componentDidMount() {
         let list = this.props.tableList;
-        if (`${list[0].createTime}`.length===10) {
+        if (`${list[0].createTime}`.length === 13) {
             list.map((item) => {
                 item.createTime = this.timestampToTime(item.createTime);
-                item.editTime = this.timestampToTime(item.editTime);
+                item.editTime = !!item.editTime
+                    ? this.timestampToTime(item.editTime)
+                    : "";
             });
         }
         this.setState({
             tableList: list,
         });
     }
-    //将时间戳转换成正常时间格式
+    /**
+     *将时间戳转换成正常时间格式
+     *
+     * @param {*} timestamp - 13 位时间戳
+     * @returns
+     * @memberof Manage
+     */
     timestampToTime(timestamp) {
-        var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
         var Y = date.getFullYear() + "-";
         var M =
             (date.getMonth() + 1 < 10
@@ -39,14 +47,16 @@ class Manage extends Component {
         return Y + M + D + h + m + s;
     }
     render() {
-        const { isClassify } = this.props;
+        const { isClassify, classifyTree } = this.props;
         return (
             <div>
                 <AdminLayout>
                     <div className={style.container}>
                         <div className={style.InputBox}>
                             <div className={style.select}>
-                                <MySelect isClassify={isClassify}></MySelect>
+                                <MySelect
+                                    isClassify={isClassify}
+                                ></MySelect>
                             </div>
                             <div className={style.search}>
                                 <MySearch isClassify={isClassify}></MySearch>

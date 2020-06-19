@@ -29,7 +29,7 @@ let escapeForHTML = (input) =>
 class MyMarkdown extends Component {
     constructor(props) {
         super(props);
-        const { mdTextarea } = this.props;
+        let { mdTextarea,mdContent } = this.props;
         this.state = {
             mdContent: mdTextarea ?marked(mdTextarea) : "",
             mdTextarea: mdTextarea ? mdTextarea : "",
@@ -82,6 +82,7 @@ class MyMarkdown extends Component {
 
     render() {
         const { rows } = this.props;
+        //console.log(this.state)
         return (
             <>
                 <div className={style.divMarkdown}>

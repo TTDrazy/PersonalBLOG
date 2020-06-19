@@ -1,25 +1,68 @@
 import React, { Component } from "react";
 import AdminLayout from "../../../components/layouts/AdminLayout";
 import MyForm from "../../../components/MyForm/MyForm";
-export default class ArticleEdit extends Component {
+import ArticleAPI from "../../../api/ArticleAPI";
+import { message as Message } from "antd";
+import { withRouter } from "react-router";
+
+class ArticleEdit extends Component {
     state = {
-        classifyList: ["Web Front", "base", "CSS"],
-        content: "我是内容按施工队",
-        createTime: "2020-05-22",
-        editTime: "2020-05-23",
         //拿到路由传过来的参数 id
-        id: this.props.location.query.id,
-        name: "阿嘎嘎",
+        id: null,
+        name: "",
+        classifyId: null,
+        mdTextarea: "",
+        mdContent: "",
+        isShow: true,
+        createTime: "",
+        editTime: "",
     };
+    componentDidMount() {
+        if (!this.props.location.query) {
+            Message.warning("未获取到该条文章信息，请重新进行修改操作！");
+            this.props.history.push("/admin/article");
+        } else {
+            let id = this.props.location.query.id;
+            this.setState({
+                id:id,
+            });
+            new ArticleAPI().getById(id).then((resolve, reject) => {
+                let { status, message, data } = resolve.data;
+                let {
+                    name,
+                    classifyId,
+                    mdTextarea,
+                    mdContent,
+                    isShow,
+                    createTime,
+                    editTime,
+                } = data[0];
+                if (status === 100) {
+                    this.setState({
+                        name,
+                        classifyId,
+                        mdTextarea,
+                        mdContent,
+                        isShow,
+                        createTime,
+                        editTime,
+                    });
+                } else {
+                    Message.warning(message);
+                }
+            });
+        }
+    }
     render() {
-        return (
+        return !!this.state.classifyId ? (
             <>
                 <AdminLayout>
-                    <MyForm
-                        list={this.state}
-                    ></MyForm>
+                    <MyForm list={this.state}></MyForm>
                 </AdminLayout>
             </>
+        ) : (
+            ""
         );
     }
 }
+export default withRouter(ArticleEdit);

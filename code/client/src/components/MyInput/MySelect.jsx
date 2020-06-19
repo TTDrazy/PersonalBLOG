@@ -1,119 +1,64 @@
 import React, { Component } from "react";
-import { Input, Cascader, Button } from "antd";
-
-const options = [
-    {
-        value: "Web Front",
-        label: "Web 前端",
-        children: [
-            {
-                value: "base",
-                label: "基础",
-                children: [
-                    {
-                        value: "HTML",
-                        label: "HTML",
-                    },
-                    {
-                        value: "CSS",
-                        label: "CSS",
-                    },
-                    {
-                        value: "JavaScript",
-                        label: "JavaScript",
-                    },
-                ],
-            },
-            {
-                value: "frame",
-                label: "框架",
-                children: [
-                    {
-                        value: "Vue",
-                        label: "Vue",
-                    },
-                    {
-                        value: "React",
-                        label: "React",
-                    },
-                    {
-                        value: "JQuery",
-                        label: "JQuery",
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        value: "life",
-        label: "生活",
-        children: [
-            {
-                value: "inspiration",
-                label: "感悟",
-                children: [
-                    {
-                        value: "houseowrk",
-                        label: "家务",
-                    },
-                    {
-                        value: "personal",
-                        label: "个人成长",
-                    },
-                ],
-            },
-        ],
-    },
-];
+import { Input, Cascader, Button, message as Message} from "antd";
+import ClassifyAPI from "../../api/ClassifyAPI";
 
 export default class MySelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchInfo: [],
+            classifyTree:[],
+            searchInfo: '',
+            searchedId:''
         };
     }
     onChange = (value) => {
-        //console.log(value);
         this.setState({
             searchInfo: value,
+            //将最后选中的 classify-Id 放入 searchedId 中
+            searchedId:value[value.length - 1]
         });
         //console.log(this.state.searchInfo);
         this.props.changeSelect &&
             this.props.changeSelect(this.state.searchInfo);
     };
 
-    // 只显示最后的单个结果
-    // displayRender = (label) => {
-    //     console.log(label[label.length - 1]);
-    // };
-
-    // componentDidMount() {
-    //     this.setState({
-    //         searchInfo: this.props.selectValue,
-    //     });
-    //     console.log(this.state.searchInfo);
-    // }
-    selectArticle = () => {
-        let arrInfo = this.state.searchInfo.join("-");
-        //成功
-        console.log("select 成功" + arrInfo);
-    };
+    componentDidMount() {
+        new ClassifyAPI().getTree().then((resolve, reject) => {
+            let { status, message, data } = resolve.data;
+            if (status === 100) {
+                this.setState({
+                    classifyTree: data,
+                });
+            } else {
+                Message.warning(message);
+            }
+        });
+        this.setState({
+            searchInfo: this.props.selectValue,
+        });
+    }
     render() {
-        const { type, isClassify, placeholder } = this.props;
+        const { type, isClassify, placeholder,selectValue } = this.props;
         const { searchInfo } = this.state;
-        const { selectValue } = this.props;
         // console.log(searchInfo);
-        // console.log(selectValue);
+        //console.log({selectValue });
         return (
             <>
                 <Input.Group compact>
                     <div style={{ display: "flex" }}>
                         <Cascader
                             defaultValue={selectValue ? selectValue : []}
+                            //自定义字段名
+                            fieldNames={{
+                                label: "name",
+                                value: "id",
+                                children: "children",
+                            }}
+                            //可以选中任意一项
+                            changeOnSelect
                             style={{ width: "100%" }}
                             value={searchInfo}
-                            options={options}
+                            options={this.state.classifyTree}
                             placeholder={
                                 placeholder
                                     ? placeholder
@@ -122,7 +67,6 @@ export default class MySelect extends Component {
                                       }`
                             }
                             expandTrigger="hover"
-                            //displayRender={this.displayRender}
                             onChange={this.onChange}
                         />
                         {type === "select" ? (

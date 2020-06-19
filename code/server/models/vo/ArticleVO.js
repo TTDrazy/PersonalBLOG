@@ -31,7 +31,7 @@ export default class ArticleVO {
         this.name = name;
         this.classifyId = classifyid;
         this.mdTextarea = mdtextarea;
-        this.mdConTent = mdcontent;
+        this.mdContent = mdcontent;
         this.isShow = isshow ? true : false;
         this.createTime = createtime
             ? this.transformDate(createtime)

@@ -19,6 +19,7 @@ class ClassifyService {
             if (item.id === lastid) {
                 info["name"] = item.name;
                 info["lastid"] = item.lastid;
+                info["id"] = item.id;
             }
         });
         return info;
@@ -36,11 +37,12 @@ class ClassifyService {
             lastId = item.lastid;
             while (!!lastId) {
                 let data = this.getNameInfoById(allData, lastId);
-                let { name, lastid } = data;
-                item.classifylist.unshift(name);
+                let { name, lastid,id } = data;
+                //lastid?item.classifylist.unshift(lastid):'';
+                id?item.classifylist.unshift(id):'';
                 lastId = lastid;
             }
-            item.classifylist.push(item.name);
+            item.classifylist.push(item.id);
         });
         return allData;
     };

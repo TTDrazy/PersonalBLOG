@@ -1,7 +1,16 @@
 import React, { Component } from "react";
-import { Table, Tag, Space, Button, Popconfirm, message, Badge } from "antd";
+import {
+    Table,
+    Tag,
+    Space,
+    Button,
+    Popconfirm,
+    message as Message,
+    Badge,
+} from "antd";
 import style from "./MyTable.module.scss";
 import { Link } from "react-router-dom";
+import ArticleAPI from "../../api/ArticleAPI";
 
 const { Column } = Table;
 
@@ -11,9 +20,11 @@ class MyTable extends Component {
         tableList: this.props.tableList,
     };
     componentDidMount() {
-        this.setState({
-            isLoading: false,
-        });
+        if (this.state.tableList.length !== 0) {
+            this.setState({
+                isLoading: false,
+            });
+        }
     }
     confirmDelete(id) {
         let newTableList = this.state.tableList.filter(
@@ -22,11 +33,18 @@ class MyTable extends Component {
         this.setState({
             tableList: newTableList,
         });
-        message.success(`删除成功！`);
+        new ArticleAPI().removeById(id).then((resolve, reject) => {
+            let { status, message } = resolve.data;
+            if (status === 100) {
+                Message.success(`删除成功！`);
+            } else {
+                Message.warning(message);
+            }
+        });
     }
 
     cancelDelete() {
-        message.warning("已取消删除操作！");
+        Message.warning("已取消删除操作！");
     }
     render() {
         const { everyPageShowInfo, isClassify } = this.props;
@@ -55,11 +73,18 @@ class MyTable extends Component {
                         <Column
                             align="center"
                             title="所属分类"
-                            dataIndex="classifyName"
-                            key="classifyName"
-                            render={(classifyName) => (
-                                <Tag color="blue" key={classifyName}>
-                                    {classifyName}
+                            // dataIndex="classifyName"
+                            // key="classifyName"
+                            dataIndex="classifyId"
+                            key="classifyId"
+                            // render={(classifyName) => (
+                            //     <Tag color="blue" key={classifyName}>
+                            //         {classifyName}
+                            //     </Tag>
+                            // )}
+                            render={(classifyId) => (
+                                <Tag color="blue" key={classifyId}>
+                                    {classifyId}
                                 </Tag>
                             )}
                         />
