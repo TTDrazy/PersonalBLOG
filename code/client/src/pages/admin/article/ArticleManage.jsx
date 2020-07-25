@@ -24,11 +24,9 @@ class ArticleManage extends Component {
     render() {
         let { tableList } = this.state;
         return tableList.length !== 0 ? (
-            <Manage
-                tableList={this.state.tableList}
-            ></Manage>
+            <Manage tableList={this.state.tableList}></Manage>
         ) : (
-            ""
+            '后台数据失联啦，请等待。。。'
         );
     }
 }

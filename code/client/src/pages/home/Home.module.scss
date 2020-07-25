@@ -1,0 +1,33 @@
+.content {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    .contentLeft {
+        .carouselBox {
+            display: flex;
+            width:540px;
+            height: 280px;
+            .rightBox {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                .aboutBox {
+                    height: 140px;
+                }
+            }
+        }
+    }
+    .contentRight {
+    }
+}
+:global(.ant-carousel .slick-slide) {
+    text-align: center;
+    height: 280px;
+    line-height: 280px;
+    background: #364d79;
+    overflow: hidden;
+}
+:global(.ant-carousel .slick-slide h3) {
+    color: #fff;
+}

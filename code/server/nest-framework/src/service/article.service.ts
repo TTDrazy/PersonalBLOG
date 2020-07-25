@@ -15,12 +15,12 @@ export class ArticleService {
    * @returns {Promise<Article[]>} 所有 Article 信息并形成数组
    * @memberof ArticleService
    */
-  async getList(): Promise<any> {
-    const article = await createQueryBuilder('article')
-      .innerJoin("article.classifyname","classify")
-      .printSql();
-    return article;
-    //this.articleRepository.find();
+  public async getList(): Promise<any> {
+    // const article = await createQueryBuilder('article')
+    //   .innerJoin("article.classifyname","classify")
+    //   .printSql();
+    // return article;
+    this.articleRepository.find();
   }
 
   /**
@@ -29,7 +29,7 @@ export class ArticleService {
    * @returns {Promise<Article>} Article 信息
    * @memberof ArticleService
    */
-  findOne(id: number): Promise<Article> {
+  public findOne(id: number): Promise<Article> {
     return this.articleRepository.findOne(id);
   }
 
@@ -39,7 +39,7 @@ export class ArticleService {
    * @returns {Promise<Article>} 未经过规范的此条 article 存储 VO 模型
    * @memberof ArticleService
    */
-  addOne(article): Promise<Article> {
+  public addOne(article): Promise<Article> {
     return this.articleRepository.save(article);
   }
 
@@ -49,7 +49,7 @@ export class ArticleService {
    * @returns {*} 数据库存储信息
    * @memberof ArticleService
    */
-  editOne(article): any {
+  public editOne(article): any {
     return this.articleRepository.update(article.id, article);
   }
 
@@ -59,7 +59,7 @@ export class ArticleService {
    * @returns {*} 数据库存储信息
    * @memberof ArticleService
    */
-  removeById(id: number): any {
+  public removeById(id: number): any {
     return this.articleRepository.delete(id);
   }
 }

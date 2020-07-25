@@ -50,14 +50,15 @@ export class ClassifyController {
       allData.push(itemModel);
     });
     const classifyInfo = allData.filter(item => item.lastid == null)[0];
-    const data = [
-      await this.classifyService.getChildrenTree(
-        allData,
-        classifyInfo.id,
-        classifyInfo,
-      ),
-    ];
-    return data;
+    console.log(classifyInfo);
+    // const data = [
+    //   await this.classifyService.getChildrenTree(
+    //     allData,
+    //     classifyInfo.id,
+    //     classifyInfo,
+    //   ),
+    // ];
+    // return data;
   }
 
   /**
