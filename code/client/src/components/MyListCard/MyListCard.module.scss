@@ -1,0 +1,20 @@
+.listCardBox{
+    display: flex;
+    flex-direction: column;
+    padding:30px 20px;
+    border: #5addad 1px solid;
+    margin-bottom: 10px;
+    .time{
+        img{
+            padding-right: 10px;
+        }
+        span{
+            font-size: 14px;
+            color:#666;
+        }
+    }
+    .content{
+        padding-top: 20px;
+        font-size: 16px;
+    }
+}

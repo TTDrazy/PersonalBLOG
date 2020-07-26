@@ -1,0 +1,41 @@
+.content {
+    width: 1090px;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+    .contentLeft {
+        padding-right: 30px;
+        width: 70%;
+        .articlesTitle {
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: #13b57a 4px solid;
+            padding-bottom: 10px;
+            .title {
+                font-size: 16px;
+                color: #333;
+                font-weight: bold;
+            }
+            .articleRightTitle {
+                font-size: 12px;
+            }
+        }
+        .articles {
+            display: flex;
+            flex-direction: column; 
+        }
+        .paginationBox{
+            padding-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .contentRight {
+        width: 30%;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+}

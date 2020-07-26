@@ -1,0 +1,20 @@
+.content{
+    padding-top: 100px;
+    display: flex;
+    flex:1;
+    justify-content: flex-start;
+    .yearButtons{
+        display: flex;
+        flex-direction: column;
+        padding-left: 100px;
+    }
+    .timeLineBox {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        .timeLine {
+            width: 700px;
+        }
+    }
+}
+

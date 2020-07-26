@@ -11,10 +11,20 @@ import ClassifyManage from "./pages/admin/classify/ClssifyManage";
 import ClassifyAdd from "./pages/admin/classify/ClassifyAdd";
 import ClassifyEdit from "./pages/admin/classify/ClassifyEdit";
 import Home from "./pages/home/Home";
+import CodeShare from './pages/home/CodeShare'
+import HappyWriting from "./pages/home/HappyWriting";
+import PersonalFiles from "./pages/home/PersonalFiles";
+import AboutMe from "./pages/home/AboutMe";
+import Article from './pages/home/Article'
 
 ReactDOM.render(
     <Router>
         <Route path="/" exact component={Home}/>
+        <Route path='/codeshare' component={CodeShare}></Route>
+        <Route path='/happywriting' component={HappyWriting}></Route>
+        <Route path='/personalfiles' component={PersonalFiles}></Route>
+        <Route path='/aboutme' component={AboutMe}></Route>
+        <Route path='/article' component={Article}></Route>
         <Route path="/login" component={Login} />
         <Route path="/admin/article" exact component={ArticleManage} />
         <Route path="/admin/article/add" exact component={ArticleAdd} />

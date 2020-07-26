@@ -1,3 +1,7 @@
+* {
+    padding: 0;
+    margin: 0;
+}
 .container {
     width: 100vw;
     height: 100vh;
@@ -8,12 +12,24 @@
         font-size: 12px;
         height: 30px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         padding: 0 50px;
-        span {
-            padding: 0 15px;
+        div {
+            width: 1090px;
+            display: flex;
+            justify-content: flex-end;
+            a {
+                color: #666;
+                &:hover {
+                    color: #000;
+                }
+            }
+            span {
+                margin: 0 20px;
+            }
         }
+
         .topHome {
         }
         .topAbout {
@@ -37,26 +53,57 @@
     .topNav {
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 100px;
+        justify-content: center;
         background-color: #74c9aa;
-        .topNavLeft {
-        }
-        .topNavRight {
-            width: 150px;
-            height: 35px;
-            border-radius: 15px;
+        .topNavBox {
+            width: 1090px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .topNavLeft {
+            }
+            .topNavRight {
+                width: 150px;
+                height: 35px;
+                border-radius: 15px;
+            }
         }
     }
     .content {
         width: 100%;
         display: flex;
+        justify-content: center;
+        background-color: #f3e5ea94;
+    }
+    .bottom {
+        background-color: #fff;
+        padding: 10px 0;
+        line-height: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        color: #737373;
+        p {
+            margin: 0;
+        }
     }
 }
-:global {
-    .ant-menu .ant-menu-light .ant-menu-root .ant-menu-horizontal {
-        background-color: #74c9aa;
-        color: #fff;
-    }
+:global(.ant-menu-item) {
+    border-bottom: 0 !important;
+}
+:global(.ant-menu-item-selected) {
+    background-color: #fff;
+    border-bottom: 0 !important;
+    border-top: 2px solid palevioletred;
+}
+:global(.ant-menu-item-active) {
+    border-bottom: 0 !important;
+    background-color: #fff;
+    border-top: 2px solid palevioletred;
+}
+:global(.ant-menu-horizontal > .ant-menu-item:hover) {
+    background-color: #fff;
 }

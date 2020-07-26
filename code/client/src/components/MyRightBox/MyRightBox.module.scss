@@ -1,0 +1,52 @@
+.contentRightBox {
+    padding-top: 10px;
+    .aboutRight {
+        font-size: 18px;
+        color: #38485a;
+        padding-bottom: 3px;
+    }
+    ul {
+        padding-left: 30px;
+        li {
+            padding: 3px 0;
+            font-size: 12px;
+        }
+    }
+    hr {
+        margin-bottom: 20px;
+    }
+    .linkContent{
+        padding-left: 20px;
+    }
+    .fastMoudle {
+        display: flex;
+        width: 100%;
+        padding-top: 10px;
+        margin-bottom: 30px;
+        .moduleBox {
+            width: 32%;
+            padding: 25px 10px;
+            margin: 0 5px;
+            text-align: center;
+            a{
+                color:#333;
+                font-size: 12px;
+            }
+        }
+        .aboutMe {
+            border: 1px solid #adcd3c;
+            background-color: #f2fddb;
+        }
+        .happyWriting {
+            border: 1px solid #5c9cc0;
+            background-color: #f2faff;
+        }
+        .home {
+            border: 1px solid #f8b3d0;
+            background-color: #fff5fa;
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

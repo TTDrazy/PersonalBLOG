@@ -1,0 +1,58 @@
+.articleBox {
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: #5addad 1px solid;
+    .articleImg {
+        img {
+            width: 167.5px;
+            height: 137px;
+        }
+    }
+    .articleContentBox {
+        padding-left: 20px;
+        .articleTitle {
+            color: #474645;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        .articleContent {
+            font-size: 12px;
+            color: #777;
+            line-height: 22px;
+            padding: 10px 0;
+            .article {
+                margin-bottom: 0;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        .articleBottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+            img {
+                padding-right: 5px;
+            }
+            .leftBox {
+                display: flex;
+                .tag {
+                    padding-right: 10px;
+                }
+            }
+            .rightBox {
+                padding-right: 20px;
+            }
+        }
+    }
+    &:hover {
+        background-color: #fff;
+    }
+}
