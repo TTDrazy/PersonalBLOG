@@ -10,28 +10,10 @@ export class ClassifyService {
         private classifyRepository: Repository<Classify>
     ) {}
 
-    public getDataById(allData, id) {
-        let result = []; //存放起始对象
-        allData.map((item) => {
-            if (item.id == id) {
-                result.push(item); //根据id号获取根对象
-                return;
-            }
-        });
-        //judege result exist or not
-        if (result.length == 0) {
-            return "Failed! id is not exist!";
-        } else {
-            result.children = [];
-            result.children = this.getAllChild(allData,result); //调用
-            //res.json(result[0]);
-            console.log(result[0]);
-        }
-    }
     //find some item all child
-    private findItemChild(allData, dataitem) {
-        let arrayList = [];
-        allData.map((item) => {
+    private findItemChild(dataitem) {
+        var arrayList = [];
+        allMenu.map((item) => {
             if (item.parent == dataitem.id) {
                 arrayList.push(item);
             }
@@ -39,19 +21,20 @@ export class ClassifyService {
         return arrayList;
     }
     //get all child
-    private getAllChild(allData, array) {
-        let childList = this.findItemChild(allData, array[0]);
+    private getAllChild(array) {
+        var childList = this.findItemChild(array[0]);
         if (childList == null) {
             return [];
         } else {
             childList.map((item) => {
                 item.children = [];
-                item.children = this.getAllChild(allData, [item]);
+                item.children = this.getAllChild([item]);
             });
             array[0].children = childList;
         }
         return childList;
     }
+    
     /**
      * 通过 lastid 得到 父级的 name 及 lastid 信息
      * @param {array} allData - 所有的 classify 数据

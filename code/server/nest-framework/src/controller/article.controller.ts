@@ -1,25 +1,15 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Put,
-  Delete,
-} from '@nestjs/common';
-import { ArticleService } from 'src/service/article.service';
-import { ApiTags } from '@nestjs/swagger';
-import AddDTO from '../models/dto/article/add.dto';
-import Article from 'src/models/entity/article.entity';
-import ArticleVO from 'src/models/vo/article.vo';
-import EditDTO from '../models/dto/article/edit.dto';
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common'
+import { ArticleService } from 'src/service/article.service'
+import { ApiTags } from '@nestjs/swagger'
+import AddDTO from '../models/dto/article/add.dto'
+import Article from 'src/models/entity/article.entity'
+import ArticleVO from 'src/models/vo/article.vo'
+import EditDTO from '../models/dto/article/edit.dto'
 
 @ApiTags('博客类型')
 @Controller('article')
 export class ArticleController {
-  constructor(private articleService: ArticleService) {
-    
-  }
+  constructor(private articleService: ArticleService) {}
 
   /**
    * 获取所有的 Article 信息
@@ -28,14 +18,13 @@ export class ArticleController {
    */
   @Get()
   async getList(): Promise<any> {
-    return await this.articleService.getList();
-    // const articleData = await this.articleService.getList();
-    // const articleList = [];
-    // articleData.map((item: Article) => {
-    //   const articleItem = new ArticleVO(item);
-    //   articleList.push(articleItem);
-    // });
-    // return articleList;
+    const articleData = await this.articleService.getList()
+    const articleList = []
+    articleData.map((item: Article) => {
+      const articleItem = new ArticleVO(item)
+      articleList.push(articleItem)
+    })
+    return articleList
   }
   /**
    * 根据 articleid 获取文章信息
@@ -45,9 +34,12 @@ export class ArticleController {
    */
   @Get(':id')
   async getOneById(@Param() id: number): Promise<ArticleVO> {
-    const articleData = await this.articleService.findOne(id);
-    const articleInfo = new ArticleVO(articleData);
-    return articleInfo;
+    const articleData = await this.articleService.findOne(id)
+    if (!!articleData) {
+      const articleInfo = new ArticleVO(articleData)
+      return articleInfo
+    }
+    // return await this.articleService.findOne(id)
   }
 
   /**
@@ -58,10 +50,10 @@ export class ArticleController {
    */
   @Post()
   async addOne(@Body() article): Promise<ArticleVO> {
-    const articleData = new AddDTO(article);
-    const articleObj = await this.articleService.addOne(articleData);
-    const articleInfo = new ArticleVO(articleObj);
-    return articleInfo;
+    const articleData = new AddDTO(article)
+    const articleObj = await this.articleService.addOne(articleData)
+    const articleInfo = new ArticleVO(articleObj)
+    return articleInfo
   }
 
   /**
@@ -72,9 +64,9 @@ export class ArticleController {
    */
   @Put()
   async editOne(@Body() article) {
-    const articleData = new EditDTO(article);
-    const databaseInfo = await this.articleService.editOne(articleData);
-    return databaseInfo;
+    const articleData = new EditDTO(article)
+    const databaseInfo = await this.articleService.editOne(articleData)
+    return databaseInfo
   }
 
   /**
@@ -85,6 +77,6 @@ export class ArticleController {
    */
   @Delete(':id')
   async removeOneById(@Param() id) {
-    return await this.articleService.removeById(id);
+    return await this.articleService.removeById(id)
   }
 }

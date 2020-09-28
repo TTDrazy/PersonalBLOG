@@ -23,7 +23,11 @@ __decorate([
     __metadata("design:type", String)
 ], Article.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column('int'),
+    typeorm_1.ManyToOne((type) => classify_entity_1.default, (classify) => classify.articles),
+    __metadata("design:type", classify_entity_1.default)
+], Article.prototype, "classify", void 0);
+__decorate([
+    typeorm_1.RelationId((article) => article.classify),
     __metadata("design:type", Number)
 ], Article.prototype, "classifyid", void 0);
 __decorate([

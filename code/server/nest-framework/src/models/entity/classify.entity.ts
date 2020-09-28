@@ -1,6 +1,6 @@
 import { Column, Entity ,OneToMany} from 'typeorm';
 import BaseEntity from './base.entity';
-import Article from 'src/models/entity/article.entity';
+import Article from './article.entity';
 
 @Entity()
 export default class Classify extends BaseEntity {
@@ -10,8 +10,8 @@ export default class Classify extends BaseEntity {
   @Column('varchar')
   name: string;
 
-  // @OneToMany(type=>Article,article=>article.classifyid)
-  // articleList:Article[];
+  @OneToMany(type=>Article,article=>article.classify)
+  articles:Article[];
 
   @Column('int', { default: null })
   lastid: number;

@@ -25,12 +25,20 @@ let ArticleController = class ArticleController {
         this.articleService = articleService;
     }
     async getList() {
-        return await this.articleService.getList();
+        const articleData = await this.articleService.getList();
+        const articleList = [];
+        articleData.map((item) => {
+            const articleItem = new article_vo_1.default(item);
+            articleList.push(articleItem);
+        });
+        return articleList;
     }
     async getOneById(id) {
         const articleData = await this.articleService.findOne(id);
-        const articleInfo = new article_vo_1.default(articleData);
-        return articleInfo;
+        if (!!articleData) {
+            const articleInfo = new article_vo_1.default(articleData);
+            return articleInfo;
+        }
     }
     async addOne(article) {
         const articleData = new add_dto_1.default(article);

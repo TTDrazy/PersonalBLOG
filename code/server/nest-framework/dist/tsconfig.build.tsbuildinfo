@@ -2652,17 +2652,17 @@
         "affectsGlobalScope": false
       },
       "../src/models/entity/classify.entity.ts": {
-        "version": "420b8344fbe0d8885cb5fbcd7fe77b09797fbe8e963316d53bc13c51596fdca8",
-        "signature": "1de00b5133c7ed3cf840b34344025812d2baa5dc19cac4f8d7b47f502b24504a",
+        "version": "ffc158f3902018453e070e71fd12974e175560f8ae9343ffe5b055a731fd2cf4",
+        "signature": "df9602eef7efb650630145df873182e23dff079bc8fe4ec2012025d566990e11",
         "affectsGlobalScope": false
       },
       "../src/models/entity/article.entity.ts": {
-        "version": "baccdd5bfdbee36e39af9cc136954ba5756bdbfaa8710c767ef034cd02bdcd62",
-        "signature": "6dd96f7fa9f19b3f4ef27ec3f67f1e03a2bb28a95bcb8b5c1ea2fbf5909a8d0d",
+        "version": "f77048db55f09b66db8b4e8c4582922e88454d77330401a0d7e1b932055d5407",
+        "signature": "5b97ed149c359ffe0e4689017de22299030c0791a3b8097bbb84944350d5b583",
         "affectsGlobalScope": false
       },
       "../src/service/article.service.ts": {
-        "version": "be287a345c5facca36ae0603eff91ebb78c32967fea25ac186ac6c232191dffb",
+        "version": "e95719d8a78dcc18980a6d3107d30b3131bf7a111c0aa2b314fb984b7ffc85d1",
         "signature": "425926611ed1dd358e706537ad3e7df2ccfa19dbcfe400e6212d2442f54016c3",
         "affectsGlobalScope": false
       },
@@ -3292,8 +3292,8 @@
         "affectsGlobalScope": false
       },
       "../src/models/vo/article.vo.ts": {
-        "version": "5c566a8cbe10626109b11713acdbf003cadbda7ac674bdce53cc98583bcec602",
-        "signature": "cd8644e3cd2ce3cf35692e3134a78491d9b5ff637e62aec1df9a6f8cde1f6a39",
+        "version": "31dc4aa2df25465f96d63bcd2cf710b84f8885c6450fe3e47164ddacc9a3a2f2",
+        "signature": "6fbd7ac7f9820520ecb32c6387ebc5470191635d56891bd36b7ef1be59baa36a",
         "affectsGlobalScope": false
       },
       "../src/models/dto/article/edit.dto.ts": {
@@ -3302,7 +3302,7 @@
         "affectsGlobalScope": false
       },
       "../src/controller/article.controller.ts": {
-        "version": "96901d66bb28216f6b3dd1eca6fbcec9954b7a330cbfd7523c5bc65fed1d498e",
+        "version": "868333be12477890b6875b433483f15c6ebea0c86f18420ef61c44dbec5dee95",
         "signature": "09fac7ed3c11253f31cf6e193cd6a4dd07cf1d754f15420219ae50a09e73b142",
         "affectsGlobalScope": false
       },
@@ -3312,7 +3312,7 @@
         "affectsGlobalScope": false
       },
       "../src/service/classify.service.ts": {
-        "version": "a48c870c6f34e10b44ddcc983751c504439208bcdeaf55789d1957d7f3ff2d7f",
+        "version": "616fce223720dcf444c5eb6c4c2b434d37a00dbb6269d0a8a75ba33ed9f23a9c",
         "signature": "17349afe0819f2e7db699d49f5bb20fa07dd1ba255bb5c6030bda1e1714cdf89",
         "affectsGlobalScope": false
       },
@@ -3332,7 +3332,7 @@
         "affectsGlobalScope": false
       },
       "../src/controller/classify.controller.ts": {
-        "version": "3d11df78a2cf53254cd5883799c6eca0a986ddf721878cd9d9645f438f7e31b5",
+        "version": "1091977c9c04b9d4439627c82d72a37dd37f96b168e1113dadb62b5677fe545a",
         "signature": "5977494e77fa6955d0cf46416c7e1e94579d7d14a94d5b594e1e84c85a6a0fad",
         "affectsGlobalScope": false
       },
@@ -13026,8 +13026,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/typeorm/index.d.ts",
-        "../src/models/entity/article.entity.ts",
-        "../src/models/entity/classify.entity.ts"
+        "../src/models/entity/article.entity.ts"
       ],
       "../src/service/classify.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -19691,9 +19690,11 @@
         "../src/interface/result.ineterface.ts"
       ],
       "../src/models/entity/article.entity.ts": [
-        "../src/models/entity/base.entity.ts"
+        "../src/models/entity/base.entity.ts",
+        "../src/models/entity/classify.entity.ts"
       ],
       "../src/models/entity/classify.entity.ts": [
+        "../src/models/entity/article.entity.ts",
         "../src/models/entity/base.entity.ts"
       ],
       "../src/models/vo/article.vo.ts": [
@@ -20596,10 +20597,7 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.scripthost.d.ts",
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
-      "../src/app.module.ts",
       "../src/controller/app.controller.ts",
-      "../src/controller/article.controller.ts",
-      "../src/controller/classify.controller.ts",
       "../src/interceptor/transform.interceptor.ts",
       "../src/interface/result.ineterface.ts",
       "../src/main.ts",
@@ -20607,17 +20605,10 @@
       "../src/models/dto/article/edit.dto.ts",
       "../src/models/dto/classify/add.dto.ts",
       "../src/models/dto/classify/edit.dto.ts",
-      "../src/models/entity/article.entity.ts",
       "../src/models/entity/base.entity.ts",
-      "../src/models/entity/classify.entity.ts",
-      "../src/models/vo/article.vo.ts",
       "../src/models/vo/classify.vo.ts",
-      "../src/module/article.module.ts",
-      "../src/module/classify.module.ts",
       "../src/pipe/transform.pipe.ts",
       "../src/service/app.service.ts",
-      "../src/service/article.service.ts",
-      "../src/service/classify.service.ts",
       "../src/utils/base.ts"
     ]
   },

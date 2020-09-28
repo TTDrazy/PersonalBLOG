@@ -23,6 +23,10 @@ __decorate([
     __metadata("design:type", String)
 ], Classify.prototype, "name", void 0);
 __decorate([
+    typeorm_1.OneToMany(type => article_entity_1.default, article => article.classify),
+    __metadata("design:type", Array)
+], Classify.prototype, "articles", void 0);
+__decorate([
     typeorm_1.Column('int', { default: null }),
     __metadata("design:type", Number)
 ], Classify.prototype, "lastid", void 0);

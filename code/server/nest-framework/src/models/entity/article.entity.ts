@@ -1,33 +1,37 @@
-import { Column, Entity,ManyToOne } from 'typeorm';
-import BaseEntity from './base.entity';
-import Classify from 'src/models/entity/classify.entity';
+import { Column, Entity, ManyToOne, RelationId } from 'typeorm'
+import BaseEntity from './base.entity'
+import Classify from './classify.entity'
 
 @Entity()
 export default class Article extends BaseEntity {
   @Column('int')
-  id: number;
+  id: number
 
   @Column('varchar')
-  name: string;
+  name: string
 
-//   @ManyToOne(type=>Classify,classify=>classify.articleList)
-//   classify:Classify;
+  @ManyToOne(
+    (type) => Classify,
+    (classify) => classify.articles
+  )
+  classify: Classify
 
-  @Column('int')
-  classifyid: number;
+  @RelationId((article: Article) => article.classify)
+  // @Column('int')
+  classifyid: number
 
   @Column('tinyint')
-  isshow: number;
+  isshow: number
 
   @Column('datetime')
-  createtime: string;
+  createtime: string
 
   @Column('datetime', { default: null })
-  edittime: string;
+  edittime: string
 
   @Column('longtext')
-  mdtextarea: string;
+  mdtextarea: string
 
   @Column('longtext', { default: null })
-  mdcontent: string;
+  mdcontent: string
 }

@@ -49,8 +49,9 @@ export class ClassifyController {
       const itemModel = new ClassifyVO(item);
       allData.push(itemModel);
     });
+    console.log(allData)
     const classifyInfo = allData.filter(item => item.lastid == null)[0];
-    console.log(classifyInfo);
+    
     // const data = [
     //   await this.classifyService.getChildrenTree(
     //     allData,

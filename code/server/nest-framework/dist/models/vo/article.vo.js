@@ -15,10 +15,11 @@ const article_entity_1 = require("../entity/article.entity");
 const base_1 = require("../../utils/base");
 class ArticleVO {
     constructor(articledata) {
-        const { id, name, classifyid, isshow, createtime, edittime, mdtextarea, mdcontent, } = articledata;
+        const { id, name, classifyid, isshow, createtime, edittime, mdtextarea, mdcontent, classify } = articledata;
         this.id = id;
         this.name = name;
         this.classifyId = classifyid;
+        this.classifyName = classify.name;
         this.isShow = isshow ? true : false;
         this.createTime = base_1.default.transformDate(createtime);
         this.editTime = edittime ? base_1.default.transformDate(edittime) : null;

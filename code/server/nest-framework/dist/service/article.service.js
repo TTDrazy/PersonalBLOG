@@ -17,16 +17,15 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const article_entity_1 = require("../models/entity/article.entity");
 const typeorm_2 = require("typeorm");
-const classify_entity_1 = require("../models/entity/classify.entity");
 let ArticleService = class ArticleService {
     constructor(articleRepository) {
         this.articleRepository = articleRepository;
     }
     async getList() {
-        this.articleRepository.find();
+        return this.articleRepository.find({ relations: ['classify'] });
     }
     findOne(id) {
-        return this.articleRepository.findOne(id);
+        return this.articleRepository.findOne(id, { relations: ['classify'] });
     }
     addOne(article) {
         return this.articleRepository.save(article);

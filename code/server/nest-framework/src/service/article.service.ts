@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import Article from 'src/models/entity/article.entity';
-import { Repository, createQueryBuilder } from 'typeorm';
-import Classify from 'src/models/entity/classify.entity';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import Article from 'src/models/entity/article.entity'
+import { Repository } from 'typeorm'
 
 @Injectable()
 export class ArticleService {
   constructor(
-    @InjectRepository(Article) private articleRepository: Repository<Article>,
+    @InjectRepository(Article)
+    private articleRepository: Repository<Article>
   ) {}
 
   /**
@@ -16,11 +16,7 @@ export class ArticleService {
    * @memberof ArticleService
    */
   public async getList(): Promise<any> {
-    // const article = await createQueryBuilder('article')
-    //   .innerJoin("article.classifyname","classify")
-    //   .printSql();
-    // return article;
-    this.articleRepository.find();
+    return this.articleRepository.find({ relations: ['classify'] })
   }
 
   /**
@@ -30,7 +26,8 @@ export class ArticleService {
    * @memberof ArticleService
    */
   public findOne(id: number): Promise<Article> {
-    return this.articleRepository.findOne(id);
+    // this.articleRepository.findOneOrFail(id); // 以id搜寻，没找到会丢出例外
+    return this.articleRepository.findOne(id,{ relations: ['classify'] })
   }
 
   /**
@@ -40,7 +37,7 @@ export class ArticleService {
    * @memberof ArticleService
    */
   public addOne(article): Promise<Article> {
-    return this.articleRepository.save(article);
+    return this.articleRepository.save(article)
   }
 
   /**
@@ -50,7 +47,7 @@ export class ArticleService {
    * @memberof ArticleService
    */
   public editOne(article): any {
-    return this.articleRepository.update(article.id, article);
+    return this.articleRepository.update(article.id, article)
   }
 
   /**
@@ -60,6 +57,6 @@ export class ArticleService {
    * @memberof ArticleService
    */
   public removeById(id: number): any {
-    return this.articleRepository.delete(id);
+    return this.articleRepository.delete(id)
   }
 }

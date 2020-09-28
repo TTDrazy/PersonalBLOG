@@ -4,6 +4,7 @@ export default class ArticleVO {
     id: number;
     name: string;
     classifyId: number;
+    classifyName: string;
     isShow: boolean;
     createTime: number;
     editTime: number | null;

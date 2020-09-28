@@ -41,8 +41,8 @@ let ClassifyController = class ClassifyController {
             const itemModel = new classify_vo_1.default(item);
             allData.push(itemModel);
         });
+        console.log(allData);
         const classifyInfo = allData.filter(item => item.lastid == null)[0];
-        console.log(classifyInfo);
     }
     async getOneById(id) {
         const classifyData = await this.classifyService.getList();
