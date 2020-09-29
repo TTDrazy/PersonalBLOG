@@ -21,6 +21,29 @@ let ClassifyService = class ClassifyService {
     constructor(classifyRepository) {
         this.classifyRepository = classifyRepository;
     }
+    findItemChild(dataitem) {
+        var arrayList = [];
+        allMenu.map((item) => {
+            if (item.parent == dataitem.id) {
+                arrayList.push(item);
+            }
+        });
+        return arrayList;
+    }
+    getAllChild(array) {
+        var childList = this.findItemChild(array[0]);
+        if (childList == null) {
+            return [];
+        }
+        else {
+            childList.map((item) => {
+                item.children = [];
+                item.children = this.getAllChild([item]);
+            });
+            array[0].children = childList;
+        }
+        return childList;
+    }
     getNameInfoById(allData, lastid) {
         const info = {};
         allData.map((item) => {
