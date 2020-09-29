@@ -25,37 +25,29 @@ let ClassifyController = class ClassifyController {
         this.classifyService = classifyService;
     }
     async getList() {
-        const classifyData = await this.classifyService.getList();
-        const data = await this.classifyService.getClassifyList(classifyData);
-        const ClassifyList = [];
-        data.map((item) => {
-            const ClassifyItem = new classify_vo_1.default(item);
-            ClassifyList.push(ClassifyItem);
+        let allFaltData = [];
+        const allData = await this.getTree();
+        const faltAllData = await this.classifyService.getFlatData(allData);
+        faltAllData.map((item) => {
+            const itemModel = new classify_vo_1.default(item);
+            allFaltData.push(itemModel);
         });
-        return ClassifyList;
+        return allFaltData;
     }
     async getTree() {
         const allData = [];
         const list = await this.classifyService.getList();
-        list.map(item => {
+        list.map((item) => {
             const itemModel = new classify_vo_1.default(item);
             allData.push(itemModel);
         });
-        console.log(allData);
-        const classifyInfo = allData.filter(item => item.lastid == null)[0];
+        return this.classifyService.getTreeData(allData);
     }
     async getOneById(id) {
-        const classifyData = await this.classifyService.getList();
-        const data = await this.classifyService.getClassifyList(classifyData);
-        const dataList = data.filter(item => item.id == id);
-        let list = [];
-        if (!!dataList[0] && !!dataList[0].id) {
-            list.push(new classify_vo_1.default(dataList[0]));
-        }
-        else {
-            list = dataList;
-        }
-        return list;
+        const pureData = await this.classifyService.findOne(id);
+        const allFaltData = await this.getList();
+        const result = allFaltData.filter((item) => item.id === pureData.id);
+        return result;
     }
     async addOne(classify) {
         const ClassifyData = new add_dto_1.default(classify);

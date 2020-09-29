@@ -2,7 +2,10 @@
 
 ### 2020/09/29
 1. 解决后台接口现存问题
-    - classify 部分 /classify/tree 返回的数据结构有问题
+    - 修正 classify 部分 /classify/tree 的返回数据 √
+    - 修改 classify 部分 /classify 的返回数据 √
+    - 修正 ClassifyVO 的结构 √
+    - 修改 classify 部分 /classify/:id 的返回数据 √
 2. 规范前端接口接入的方式
 
 ---

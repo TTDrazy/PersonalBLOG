@@ -3312,13 +3312,13 @@
         "affectsGlobalScope": false
       },
       "../src/service/classify.service.ts": {
-        "version": "c90ddfa55afff3e028ea1a5b065cac086cbc234098285299e38210e3356cbb98",
-        "signature": "c8863f23940108200b024e5efae33dd76a402c6de41ed41d4bcce97ef7661d0d",
+        "version": "bfc4c0b945241ccb8f3ed19fb036227f3fc928551d89343ee5c5ff882a5c4864",
+        "signature": "7a52d568e850f6c880c07b3df934c001afa8bfeb01b52c4f164f909938f78b0c",
         "affectsGlobalScope": false
       },
       "../src/models/vo/classify.vo.ts": {
-        "version": "37eb7f1ca1bd1572b487d690e1e88abe9c9b781fcc94fa0844ed7a1d3fb77135",
-        "signature": "15d87a37ae4b297035d8f5e3b66e809c79833c2b227e5863bcaec03344b1b4df",
+        "version": "ee9b9f65fafe9cf6b2de616beab91589ba207698476317c002bac750375c0850",
+        "signature": "198bf63a3137fc0078c80190a9e8af0876611b00d3f3ebfa7c0fe5514b672ba1",
         "affectsGlobalScope": false
       },
       "../src/models/dto/classify/add.dto.ts": {
@@ -3332,8 +3332,8 @@
         "affectsGlobalScope": false
       },
       "../src/controller/classify.controller.ts": {
-        "version": "1091977c9c04b9d4439627c82d72a37dd37f96b168e1113dadb62b5677fe545a",
-        "signature": "5977494e77fa6955d0cf46416c7e1e94579d7d14a94d5b594e1e84c85a6a0fad",
+        "version": "d141f5246be6767b38b19f4f7a46b976d82d2fb5042cb0225ec5fd8d8326fabf",
+        "signature": "40976df0d3a53b81226149002fae44edc224bcdf198e84718c8981ef9ff22865",
         "affectsGlobalScope": false
       },
       "../src/module/classify.module.ts": {
@@ -12976,6 +12976,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/class-validator/types/index.d.ts",
+        "../src/models/entity/classify.entity.ts",
         "../src/utils/base.ts"
       ],
       "../src/module/article.module.ts": [
@@ -19683,6 +19684,7 @@
         "../src/service/article.service.ts"
       ],
       "../src/controller/classify.controller.ts": [
+        "../src/models/entity/classify.entity.ts",
         "../src/models/vo/classify.vo.ts",
         "../src/service/classify.service.ts"
       ],
@@ -19699,6 +19701,9 @@
       ],
       "../src/models/vo/article.vo.ts": [
         "../src/models/entity/article.entity.ts"
+      ],
+      "../src/models/vo/classify.vo.ts": [
+        "../src/models/entity/classify.entity.ts"
       ],
       "../src/service/article.service.ts": [
         "../node_modules/typeorm/index.d.ts",
@@ -20597,7 +20602,10 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.scripthost.d.ts",
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "../src/app.module.ts",
       "../src/controller/app.controller.ts",
+      "../src/controller/article.controller.ts",
+      "../src/controller/classify.controller.ts",
       "../src/interceptor/transform.interceptor.ts",
       "../src/interface/result.ineterface.ts",
       "../src/main.ts",
@@ -20605,10 +20613,17 @@
       "../src/models/dto/article/edit.dto.ts",
       "../src/models/dto/classify/add.dto.ts",
       "../src/models/dto/classify/edit.dto.ts",
+      "../src/models/entity/article.entity.ts",
       "../src/models/entity/base.entity.ts",
+      "../src/models/entity/classify.entity.ts",
+      "../src/models/vo/article.vo.ts",
       "../src/models/vo/classify.vo.ts",
+      "../src/module/article.module.ts",
+      "../src/module/classify.module.ts",
       "../src/pipe/transform.pipe.ts",
       "../src/service/app.service.ts",
+      "../src/service/article.service.ts",
+      "../src/service/classify.service.ts",
       "../src/utils/base.ts"
     ]
   },

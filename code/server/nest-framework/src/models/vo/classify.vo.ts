@@ -1,6 +1,7 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
-import BaseUtils from 'src/utils/base';
+import Classify from 'src/models/entity/classify.entity'
+import { ApiProperty } from '@nestjs/swagger'
+import { IsNotEmpty } from 'class-validator'
+import BaseUtils from 'src/utils/base'
 
 /**
  * Classify 的 VO
@@ -15,39 +16,31 @@ import BaseUtils from 'src/utils/base';
  * @class ClassifyVO
  */
 export default class ClassifyVO {
-  constructor({
-    id,
-    name,
-    lastid,
-    isshow,
-    createtime,
-    edittime,
-    classifylist = [],
-  }) {
-    this.id = id;
-    this.name = name;
-    this.lastId = lastid;
-    this.isShow = isshow ? true : false;
-    this.createTime = BaseUtils.transformDate(createtime);
-    this.editTime = edittime ? BaseUtils.transformDate(edittime) : null;
-    this.classifyList = classifylist;
+  constructor({ id, name, lastid, isshow, createtime, edittime ,children=[]}) {
+    this.id = id
+    this.name = name
+    this.lastId = lastid
+    this.isShow = isshow ? true : false
+    this.createTime = BaseUtils.transformDate(createtime)
+    this.editTime = edittime ? BaseUtils.transformDate(edittime) : null
+    this.children = children
   }
   @ApiProperty()
   @IsNotEmpty()
-  id: number;
+  id: number
 
   @IsNotEmpty()
-  name: string;
+  name: string
 
-  lastId: number | null;
-
-  @IsNotEmpty()
-  isShow: boolean;
+  lastId: number | null
 
   @IsNotEmpty()
-  createTime: number;
+  isShow: boolean
 
-  editTime: number | null;
+  @IsNotEmpty()
+  createTime: number
 
-  classifyList: any[];
+  editTime: number | null
+
+  children: Array<Classify>
 }

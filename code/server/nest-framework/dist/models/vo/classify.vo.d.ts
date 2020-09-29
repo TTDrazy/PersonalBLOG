@@ -1,12 +1,13 @@
+import Classify from 'src/models/entity/classify.entity';
 export default class ClassifyVO {
-    constructor({ id, name, lastid, isshow, createtime, edittime, classifylist, }: {
+    constructor({ id, name, lastid, isshow, createtime, edittime, children }: {
         id: any;
         name: any;
         lastid: any;
         isshow: any;
         createtime: any;
         edittime: any;
-        classifylist?: any[];
+        children?: any[];
     });
     id: number;
     name: string;
@@ -14,5 +15,5 @@ export default class ClassifyVO {
     isShow: boolean;
     createTime: number;
     editTime: number | null;
-    classifyList: any[];
+    children: Array<Classify>;
 }

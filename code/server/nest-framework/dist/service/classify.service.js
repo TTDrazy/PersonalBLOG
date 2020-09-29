@@ -20,66 +20,25 @@ const classify_entity_1 = require("../models/entity/classify.entity");
 let ClassifyService = class ClassifyService {
     constructor(classifyRepository) {
         this.classifyRepository = classifyRepository;
-    }
-    findItemChild(dataitem) {
-        var arrayList = [];
-        allMenu.map((item) => {
-            if (item.parent == dataitem.id) {
-                arrayList.push(item);
-            }
-        });
-        return arrayList;
-    }
-    getAllChild(array) {
-        var childList = this.findItemChild(array[0]);
-        if (childList == null) {
-            return [];
-        }
-        else {
-            childList.map((item) => {
-                item.children = [];
-                item.children = this.getAllChild([item]);
+        this.getTreeData = (allData) => {
+            let cloneData = JSON.parse(JSON.stringify(allData));
+            return cloneData.filter((father) => {
+                let branchArr = cloneData.filter((child) => father.id == child.lastId);
+                branchArr.length > 0 ? (father.children = branchArr) : '';
+                return father.lastId == null;
             });
-            array[0].children = childList;
-        }
-        return childList;
-    }
-    getNameInfoById(allData, lastid) {
-        const info = {};
-        allData.map((item) => {
-            if (item.id === lastid) {
-                info["name"] = item.name;
-                info["lastid"] = item.lastid;
-                info["id"] = item.id;
-            }
-        });
-        return info;
-    }
-    getClassifyList(allData) {
-        let lastId = null;
-        allData.map((item) => {
-            item.classifylist = [];
-            lastId = item.lastid;
-            while (!!lastId) {
-                const data = this.getNameInfoById(allData, lastId);
-                const { lastid, id } = data;
-                id ? item.classifylist.unshift(id) : "";
-                lastId = lastid;
-            }
-            item.classifylist.push(item.id);
-        });
-        return allData;
-    }
-    getChildrenTree(allData, parentId, classifyInfo) {
-        const childrenList = allData.filter((item) => item.lastId == parentId);
-        if (childrenList.length > 0) {
-            classifyInfo.children = [];
-            childrenList.map((item) => {
-                this.getChildrenTree(allData, item.id, item);
-            });
-            classifyInfo.children = childrenList;
-        }
-        return classifyInfo;
+        };
+        this.getFlatData = (allData) => {
+            let result = [];
+            const faltFunction = (source) => {
+                source.forEach((el) => {
+                    result.push(el);
+                    el.children && el.children.length > 0 ? faltFunction(el.children) : '';
+                });
+            };
+            faltFunction(allData);
+            return result;
+        };
     }
     getList() {
         return this.classifyRepository.find();

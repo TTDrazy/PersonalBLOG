@@ -9,18 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const classify_entity_1 = require("../entity/classify.entity");
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const base_1 = require("../../utils/base");
 class ClassifyVO {
-    constructor({ id, name, lastid, isshow, createtime, edittime, classifylist = [], }) {
+    constructor({ id, name, lastid, isshow, createtime, edittime, children = [] }) {
         this.id = id;
         this.name = name;
         this.lastId = lastid;
         this.isShow = isshow ? true : false;
         this.createTime = base_1.default.transformDate(createtime);
         this.editTime = edittime ? base_1.default.transformDate(edittime) : null;
-        this.classifyList = classifylist;
+        this.children = children;
     }
 }
 __decorate([
