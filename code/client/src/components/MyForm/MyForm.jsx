@@ -4,8 +4,8 @@ import { Input, Button, Radio, message as Message } from "antd";
 import MySelect from "../MyInput/MySelect";
 import { Link, withRouter } from "react-router-dom";
 import MyMarkdown from "../MyMarkdown/MyMarkdown";
-import ClassifyAPI from "../../api/ClassifyAPI";
-import ArticleAPI from "../../api/ArticleAPI";
+import ClassifyApi from "../../api/classify/ClassifyApi";
+import ArticleApi from "../../api/article/ArticleApi";
 
 class MyForm extends Component {
     state = {
@@ -44,7 +44,7 @@ class MyForm extends Component {
                     isShow,
                 },
                 () => {
-                    new ClassifyAPI()
+                    new ClassifyApi()
                         .getById(this.state.classifyId)
                         .then((resolve, reject) => {
                             let { status, message, data } = resolve.data;
@@ -130,7 +130,7 @@ class MyForm extends Component {
             //     }
             // });
         } else {
-            new ArticleAPI().editArticle(this.state).then((resolve, reject) => {
+            new ArticleApi().editArticle(this.state).then((resolve, reject) => {
                 let { status, message, data } = resolve.data;
                 if (status === 100) {
                     Message.success(

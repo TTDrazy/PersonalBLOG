@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, Cascader, Button, message as Message} from "antd";
-import ClassifyAPI from "../../api/ClassifyAPI";
+import ClassifyApi from "../../api/classify/ClassifyApi";
 
 export default class MySelect extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class MySelect extends Component {
     };
 
     componentDidMount() {
-        new ClassifyAPI().getTree().then((resolve, reject) => {
+        new ClassifyApi().getTree().then((resolve, reject) => {
             let { status, message, data } = resolve.data;
             if (status === 100) {
                 this.setState({

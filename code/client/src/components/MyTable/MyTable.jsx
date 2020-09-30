@@ -10,7 +10,7 @@ import {
 } from "antd";
 import style from "./MyTable.module.scss";
 import { Link } from "react-router-dom";
-import ArticleAPI from "../../api/ArticleAPI";
+import ArticleApi from "../../api/article/ArticleApi";
 
 const { Column } = Table;
 
@@ -33,7 +33,7 @@ class MyTable extends Component {
         this.setState({
             tableList: newTableList,
         });
-        new ArticleAPI().removeById(id).then((resolve, reject) => {
+        new ArticleApi().removeById(id).then((resolve, reject) => {
             let { status, message } = resolve.data;
             if (status === 100) {
                 Message.success(`删除成功！`);

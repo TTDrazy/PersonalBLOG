@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AdminLayout from "../../../components/layouts/AdminLayout";
 import MyForm from "../../../components/MyForm/MyForm";
-import ArticleAPI from "../../../api/ArticleAPI";
+import ArticleApi from "../../../api/article/ArticleApi";
 import { message as Message } from "antd";
 import { withRouter } from "react-router";
 
@@ -26,7 +26,7 @@ class ArticleEdit extends Component {
             this.setState({
                 id:id,
             });
-            new ArticleAPI().getById(id).then((resolve, reject) => {
+            new ArticleApi().getById(id).then((resolve, reject) => {
                 let { status, message, data } = resolve.data;
                 let {
                     name,
