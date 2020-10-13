@@ -5,12 +5,26 @@ import style from "./CodeShare.module.scss";
 import MyCard from "../../components/MyCard/MyCard";
 import MyRightBox from "../../components/MyRightBox/MyRightBox";
 import { Link } from "react-router-dom";
+import ArticleService from '../../service/home/article/ArticleService'
 
 class CodeShare extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          cardList: [],
+        }
+      }
+      componentDidMount() {
+        let articleService = new ArticleService()
+        articleService.getArticleCardList().then((data) => {
+          this.setState({ cardList: data })
+        })
+      }
     onChange(pageNumber) {
         console.log("Page: ", pageNumber);
     }
     render() {
+        let { cardList } = this.state
         return (
             <HomeLayout>
                 <div className={style.content}>
@@ -22,24 +36,14 @@ class CodeShare extends Component {
                             </div>
                         </div>
                         <div className={style.articles}>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
-                            <MyCard></MyCard>
+                            <MyCard cardList={cardList}></MyCard>
                         </div>
                         <div className={style.paginationBox}>
                             <Pagination
                                 defaultPageSize={10}
                                 // showQuickJumper
                                 defaultCurrent={1}
-                                total={35}
+                                total={cardList.length}
                                 onChange={this.onChange}
                             />
                         </div>

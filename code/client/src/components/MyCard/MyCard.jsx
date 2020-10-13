@@ -14,65 +14,57 @@ class MyCard extends Component {
       this.props.history.push('/article')
     }
   }
-  state = {
-    id: 1,
-    name: '亲亲我们张猪猪',
-    briefContent: `亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝
-        亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝
-        亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝亲亲宝贝`,
-    classifyName: '技术分享',
-    dateTime: '2020-07-26 11:52:35',
-  }
   render() {
-    const { name, briefContent, classifyName, dateTime } = this.state
-    return (
-      <div>
-        <div className={style.articleBox}>
-          <div className={style.articleImg}>
-            <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"></img>
-          </div>
-          <div className={style.articleContentBox}>
-            <div
-              className={style.articleTitle}
-              onClick={() => this.toArticleDetails(1)}
-            >
-              {name}
+    return this.props.cardList.map((item) => {
+      return (
+        <div key={item.id}>
+          <div className={style.articleBox}>
+            <div className={style.articleImg}>
+              <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"></img>
             </div>
-            <div
-              className={style.articleContent}
-              onClick={() => this.toArticleDetails(1)}
-            >
-              <Paragraph
-                className={style.article}
-                ellipsis={{
-                  rows: 2,
-                }}
+            <div className={style.articleContentBox}>
+              <div
+                className={style.articleTitle}
+                onClick={() => this.toArticleDetails(1)}
               >
-                {briefContent}
-              </Paragraph>
-              <a onClick={() => this.toArticleDetails(1)}>[详情]</a>
-            </div>
-            <div className={style.articleBottom}>
-              <div className={style.leftBox}>
-                <div className={style.tag}>
-                  <img src={tag}></img>
-                  <Link to="/codeshare">{classifyName}</Link>
-                </div>
-                <div className={style.createtime}>
-                  <img src={time}></img>
-                  {dateTime}
-                </div>
+                {item.name}
               </div>
-              <div className={style.rightBox}>
-                <div className={style.viewedNumber}>
-                  <img src={view}></img>100
+              <div
+                className={style.articleContent}
+                onClick={() => this.toArticleDetails(1)}
+              >
+                <Paragraph
+                  className={style.article}
+                  ellipsis={{
+                    rows: 2,
+                  }}
+                >
+                  {item.briefContent}
+                </Paragraph>
+                <a onClick={() => this.toArticleDetails(1)}>[详情]</a>
+              </div>
+              <div className={style.articleBottom}>
+                <div className={style.leftBox}>
+                  <div className={style.tag}>
+                    <img src={tag}></img>
+                    <Link to="/codeshare">{item.classifyName}</Link>
+                  </div>
+                  <div className={style.createtime}>
+                    <img src={time}></img>
+                    {item.dateTime}
+                  </div>
+                </div>
+                <div className={style.rightBox}>
+                  <div className={style.viewedNumber}>
+                    <img src={view}></img>100
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    })
   }
 }
 
