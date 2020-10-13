@@ -8,7 +8,7 @@ class ArticleApi {
    *
    * @memberof ArticleApi
    */
-  getAll = async () => {
+  async getAll() {
     let response = await Axios.get(commonRoot)
     return response
   }
@@ -18,7 +18,7 @@ class ArticleApi {
    * @param id - Article-id
    * @memberof ArticleApi
    */
-  getById = async (id) => {
+  async getById(id) {
     let response = await Axios.get(`${commonRoot}/${id}`)
     return response
   }
@@ -29,7 +29,7 @@ class ArticleApi {
    *
    * @memberof ArticleApi
    */
-  addArticle = async (articleAddDTO) => {
+  async addArticle(articleAddDTO) {
     let response = await Axios.post(commonRoot, articleAddDTO)
     return response
   }
@@ -40,7 +40,7 @@ class ArticleApi {
    *
    * @memberof ArticleApi
    */
-  editArticle = async (articleEditDTO) => {
+  async editArticle(articleEditDTO) {
     let response = await Axios.put(commonRoot, articleEditDTO)
     return response
   }
@@ -49,7 +49,7 @@ class ArticleApi {
    * @param id - Article-id
    * @memberof ArticleApi
    */
-  removeById = async (id) => {
+  async removeById(id) {
     let response = await Axios.delete(`${commonRoot}/${id}`)
     return response
   }

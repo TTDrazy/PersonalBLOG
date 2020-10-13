@@ -8,17 +8,17 @@ class ClassifyApi {
    *
    * @memberof ClassifyApi
    */
-  getAll = async () => {
+  async getAll() {
     let response = await Axios.get(commonRoot)
     return response
   }
 
   /**
    * 获取树形结构所有的 Classify 信息
-   * 
+   *
    * @memberof ClassifyApi
    */
-  getTree = async () => {
+  async getTree() {
     let response = await Axios.get(`${commonRoot}/tree`)
     return response
   }
@@ -27,7 +27,7 @@ class ClassifyApi {
    * @param id - Classify-id
    * @memberof ClassifyApi
    */
-  getById = async (id) => {
+  async getById(id) {
     let response = await Axios.get(`${commonRoot}/${id}`)
     return response
   }
@@ -38,7 +38,7 @@ class ClassifyApi {
    *
    * @memberof ClassifyApi
    */
-  addClassify = async (classifyAddDTO) => {
+  async addClassify(classifyAddDTO) {
     let response = await Axios.post(commonRoot, classifyAddDTO)
     return response
   }
@@ -49,7 +49,7 @@ class ClassifyApi {
    *
    * @memberof ClassifyApi
    */
-  editClassify = async (classifyEditDTO) => {
+  async editClassify(classifyEditDTO) {
     let response = await Axios.put(commonRoot, classifyEditDTO)
     return response
   }
@@ -58,7 +58,7 @@ class ClassifyApi {
    * @param id - Classify-id
    * @memberof ClassifyApi
    */
-  removeById = async (id) => {
+  async removeById(id) {
     let response = await Axios.delete(`${commonRoot}/${id}`)
     return response
   }
