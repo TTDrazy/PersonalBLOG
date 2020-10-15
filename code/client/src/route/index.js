@@ -66,11 +66,6 @@ const routes = [
     component: ArticleManage,
   },
   {
-    path: '/admin/article',
-    exact: true,
-    component: ArticleManage,
-  },
-  {
     path: '/admin/article/add',
     exact: true,
     component: ArticleAdd,

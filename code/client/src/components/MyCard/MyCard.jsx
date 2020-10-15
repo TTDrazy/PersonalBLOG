@@ -11,7 +11,7 @@ const { Paragraph } = Typography
 class MyCard extends Component {
   toArticleDetails(articleId) {
     if (!!articleId) {
-      this.props.history.push('/article')
+      this.props.history.push({ pathname: '/article', query: articleId })
     }
   }
   render() {
@@ -25,13 +25,13 @@ class MyCard extends Component {
             <div className={style.articleContentBox}>
               <div
                 className={style.articleTitle}
-                onClick={() => this.toArticleDetails(1)}
+                onClick={() => this.toArticleDetails(item.id)}
               >
                 {item.name}
               </div>
               <div
                 className={style.articleContent}
-                onClick={() => this.toArticleDetails(1)}
+                onClick={() => this.toArticleDetails(item.id)}
               >
                 <Paragraph
                   className={style.article}
@@ -41,7 +41,7 @@ class MyCard extends Component {
                 >
                   {item.briefContent}
                 </Paragraph>
-                <a onClick={() => this.toArticleDetails(1)}>[详情]</a>
+                <a onClick={() => this.toArticleDetails(item.id)}>[详情]</a>
               </div>
               <div className={style.articleBottom}>
                 <div className={style.leftBox}>
