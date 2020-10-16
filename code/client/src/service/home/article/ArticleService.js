@@ -22,11 +22,11 @@ export default class ArticleService {
             articleShowList.push(new ArticleCardVO(item))
           })
           //反序
-          articleList.sort(function (a, b) {
+          articleShowList.sort(function (a, b) {
             //Date.parse() 是将日期时间转换成毫秒进行对比
             return (
-              Date.parse(b.date.replace(/-/g, '/')) -
-              Date.parse(a.date.replace(/-/g, '/'))
+              Date.parse(b.dateTime.replace(/-/g, '/')) -
+              Date.parse(a.dateTime.replace(/-/g, '/'))
             )
           })
           resolve(articleShowList)
