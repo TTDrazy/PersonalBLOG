@@ -19,9 +19,9 @@ export class ArticleController {
   @Get()
   async getList(): Promise<any> {
     const articleData = await this.articleService.getList()
-    const articleList = []
-    articleData.map((item: Article) => {
-      const articleItem = new ArticleVO(item)
+    let articleList = []
+    articleData.map((item: Article) => {  
+      let articleItem = new ArticleVO(item)
       articleList.push(articleItem)
     })
     return articleList

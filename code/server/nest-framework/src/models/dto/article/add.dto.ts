@@ -7,7 +7,7 @@ import { format } from 'silly-datetime';
  * @class ArticleDTO
  */
 export default class AddDTO {
-  constructor({ name='标题', classifyId, isShow=1, mdTextarea,mdContent }) {
+  constructor({ name='标题', classifyId = 1, isShow=1, mdTextarea,mdContent }) {
     this.name = name;
     this.classifyid = classifyId;
     this.isshow = isShow ? 1 : 0;

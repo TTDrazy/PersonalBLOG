@@ -26,9 +26,9 @@ let ArticleController = class ArticleController {
     }
     async getList() {
         const articleData = await this.articleService.getList();
-        const articleList = [];
+        let articleList = [];
         articleData.map((item) => {
-            const articleItem = new article_vo_1.default(item);
+            let articleItem = new article_vo_1.default(item);
             articleList.push(articleItem);
         });
         return articleList;

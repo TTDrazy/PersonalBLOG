@@ -13,7 +13,7 @@ const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const silly_datetime_1 = require("silly-datetime");
 class AddDTO {
-    constructor({ name = '标题', classifyId, isShow = 1, mdTextarea, mdContent }) {
+    constructor({ name = '标题', classifyId = 1, isShow = 1, mdTextarea, mdContent }) {
         this.name = name;
         this.classifyid = classifyId;
         this.isshow = isShow ? 1 : 0;

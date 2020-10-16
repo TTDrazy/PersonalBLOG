@@ -1,7 +1,7 @@
 export default class AddDTO {
     constructor({ name, classifyId, isShow, mdTextarea, mdContent }: {
         name?: string;
-        classifyId: any;
+        classifyId?: number;
         isShow?: number;
         mdTextarea: any;
         mdContent: any;

@@ -8,7 +8,7 @@ export default class ArticleService {
   }
   /**
    * 获取所有可以展示的的 Article 卡片列表信息，并按照时间倒序展示
-   * 如果有修改时间按照修改时间排序，如果没有修改时间按照创建时间排序
+   * 如果有修改时间按照修改时间排序，如果没有修改时间按照创建时间倒序排序
    * @memberof ArticleService
    */
   async getArticleCardList() {
