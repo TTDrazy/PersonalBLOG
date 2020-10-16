@@ -75,16 +75,16 @@ class MyTable extends Component {
                             title="所属分类"
                             // dataIndex="classifyName"
                             // key="classifyName"
-                            dataIndex="classifyId"
-                            key="classifyId"
+                            dataIndex="classifyName"
+                            key="classifyName"
                             // render={(classifyName) => (
                             //     <Tag color="blue" key={classifyName}>
                             //         {classifyName}
                             //     </Tag>
                             // )}
-                            render={(classifyId) => (
-                                <Tag color="blue" key={classifyId}>
-                                    {classifyId}
+                            render={(classifyName) => (
+                                <Tag color="blue" key={classifyName}>
+                                    {classifyName}
                                 </Tag>
                             )}
                         />

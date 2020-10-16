@@ -12,40 +12,6 @@ class Manage extends Component {
     state = {
         tableList: this.props.tableList,
     };
-    componentDidMount() {
-        let list = this.props.tableList;
-        if (`${list[0].createTime}`.length === 13) {
-            list.map((item) => {
-                item.createTime = this.timestampToTime(item.createTime);
-                item.editTime = !!item.editTime
-                    ? this.timestampToTime(item.editTime)
-                    : "";
-            });
-        }
-        this.setState({
-            tableList: list,
-        });
-    }
-    /**
-     *将时间戳转换成正常时间格式
-     *
-     * @param {*} timestamp - 13 位时间戳
-     * @returns
-     * @memberof Manage
-     */
-    timestampToTime(timestamp) {
-        var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
-        var Y = date.getFullYear() + "-";
-        var M =
-            (date.getMonth() + 1 < 10
-                ? "0" + (date.getMonth() + 1)
-                : date.getMonth() + 1) + "-";
-        var D = date.getDate() + " ";
-        var h = date.getHours() + ":";
-        var m = date.getMinutes() + ":";
-        var s = date.getSeconds();
-        return Y + M + D + h + m + s;
-    }
     render() {
         const { isClassify, classifyTree } = this.props;
         return (

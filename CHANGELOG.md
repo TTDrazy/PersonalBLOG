@@ -1,9 +1,16 @@
 # 更新日志
 
 ### 2020/10/16
-1. 继续配置前端 model 层与 service 层
+1. 继续配置前端 model 层与 service 层 -- v1 版
     - admin
-    - home
+    - home √
+2. 暂存问题
+    - 前端路由跳转时的 loading 应该单独写一个页面
+    - home 主页右侧最近文章跳转因为是同一个路由 react-router history 不能跳转
+    - admin article 及 classify 主页搜索框没有做功能
+    - 
+
+---
 
 ### 2020/10/15
 1. 继续配置前端 model 层与 service 层

@@ -4,7 +4,8 @@ import { Carousel, Typography } from 'antd'
 import style from './Home.module.scss'
 import MyCard from '../../components/MyCard/MyCard'
 import { Link } from 'react-router-dom'
-import ArticleService from '../../service/home/article/ArticleService'
+import ArticleService from '@/service/home/article/ArticleService'
+import MyRightBox from '@/components/MyRightBox/MyRightBox'
 
 const { Title } = Typography
 
@@ -80,50 +81,7 @@ class Home extends Component {
             </div>
           </div>
           <div className={style.contentRight}>
-            <div className={style.contentRightBox}>
-              <div className={style.aboutRight}>关注我</div>
-              <hr></hr>
-              <div className={style.chatIcons}>
-                <div className={style.chatIconBox}>
-                  <div className={`${style.chatIcon} ${style.weixin}`}></div>
-                  <span>微信</span>
-                </div>
-                <div className={style.chatIconBox}>
-                  <a
-                    className={`${style.chatIcon} ${style.weibo}`}
-                    href="https://weibo.com/3727705537/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1#_rnd1595730321423"
-                  ></a>
-                  <span>新浪微博</span>
-                </div>
-                <div className={style.chatIconBox}>
-                  <a
-                    className={`${style.chatIcon} ${style.email}`}
-                    href="mailto:2421209781@qq.com"
-                  ></a>
-                  <span>邮箱</span>
-                </div>
-                <div className={style.chatIconBox}>
-                  <div className={`${style.chatIcon} ${style.feedBack}`}></div>
-                  <span>意见反馈</span>
-                </div>
-              </div>
-            </div>
-            <div className={style.contentRightBox}>
-              <div className={style.aboutRight}>最新文章</div>
-              <hr></hr>
-              <ul>
-                <li>xxx</li>
-                <li>xxx</li>
-                <li>xxx</li>
-                <li>xxx</li>
-                <li>xxx</li>
-              </ul>
-            </div>
-            <div className={style.contentRightBox}>
-              <div className={style.aboutRight}>友情链接</div>
-              <hr></hr>
-              <div className={style.linkContent}>xxx</div>
-            </div>
+            <MyRightBox></MyRightBox>
           </div>
         </div>
       </HomeLayout>
