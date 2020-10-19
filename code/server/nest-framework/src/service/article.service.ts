@@ -27,7 +27,7 @@ export class ArticleService {
    */
   public findOne(id: number): Promise<Article> {
     // this.articleRepository.findOneOrFail(id); // 以id搜寻，没找到会丢出例外
-    return this.articleRepository.findOne(id,{ relations: ['classify'] })
+    return this.articleRepository.findOne(id, { relations: ['classify'] })
   }
 
   /**
@@ -37,6 +37,7 @@ export class ArticleService {
    * @memberof ArticleService
    */
   public addOne(article): Promise<Article> {
+    console.log(article)
     return this.articleRepository.save(article)
   }
 

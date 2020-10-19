@@ -24,6 +24,7 @@ __decorate([
 ], Article.prototype, "name", void 0);
 __decorate([
     typeorm_1.ManyToOne((type) => classify_entity_1.default, (classify) => classify.articles),
+    typeorm_1.JoinColumn({ name: 'classifyid' }),
     __metadata("design:type", classify_entity_1.default)
 ], Article.prototype, "classify", void 0);
 __decorate([

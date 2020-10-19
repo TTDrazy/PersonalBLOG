@@ -1,5 +1,16 @@
 # 更新日志
 
+### 2020/10/19
+1. 继续配置前端 model 层与 service 层 -- v1 版
+    - admin
+    - home √
+2. 暂存问题
+    - 前端 /admin 重定向功能未实现
+    - 前端后台管理部分左侧导航的层级均应增加 添加和修改
+    - 后台因为 @RelationId 不能使 TypeORM 进行添加/修改 的操作
+
+---
+
 ### 2020/10/16
 1. 继续配置前端 model 层与 service 层 -- v1 版
     - admin
@@ -8,7 +19,6 @@
     - 前端路由跳转时的 loading 应该单独写一个页面
     - home 主页右侧最近文章跳转因为是同一个路由 react-router history 不能跳转
     - admin article 及 classify 主页搜索框没有做功能
-    - 
 
 ---
 

@@ -43,8 +43,7 @@ let ArticleController = class ArticleController {
     async addOne(article) {
         const articleData = new add_dto_1.default(article);
         const articleObj = await this.articleService.addOne(articleData);
-        const articleInfo = new article_vo_1.default(articleObj);
-        return articleInfo;
+        return articleObj;
     }
     async editOne(article) {
         const articleData = new edit_dto_1.default(article);

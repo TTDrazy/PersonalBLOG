@@ -34,14 +34,14 @@ class MyCard extends Component {
                 onClick={() => this.toArticleDetails(item.id)}
               >
                 <Paragraph
+                  // ellipsis={{
+                  //   rows: 2,
+                  // }}
                   className={style.article}
-                  ellipsis={{
-                    rows: 2,
-                  }}
                 >
                   {item.briefContent}
+                  <a onClick={() => this.toArticleDetails(item.id)}>[详情]</a>
                 </Paragraph>
-                <a onClick={() => this.toArticleDetails(item.id)}>[详情]</a>
               </div>
               <div className={style.articleBottom}>
                 <div className={style.leftBox}>

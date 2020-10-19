@@ -1,12 +1,10 @@
-// id, name, classifyId, isShow, mdTextarea, mdContent
 class AddDTO {
-  constructor({ id, name, classifyId, isShow, mdTextarea, mdContent }) {
-    this.id = id
+  constructor({ name, classifyId, isShow, mdTextarea, mdContent }) {
     this.name = name
     this.classifyId = classifyId
     this.isShow = isShow
     this.mdTextarea = mdTextarea
-    this.editTime = mdContent
+    this.mdContent = mdContent
   }
 }
 export default AddDTO

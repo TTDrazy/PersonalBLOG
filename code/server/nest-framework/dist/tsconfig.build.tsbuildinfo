@@ -2657,12 +2657,12 @@
         "affectsGlobalScope": false
       },
       "../src/models/entity/article.entity.ts": {
-        "version": "f77048db55f09b66db8b4e8c4582922e88454d77330401a0d7e1b932055d5407",
+        "version": "9d4a4b14e8d9fedb8d8900c887a5299470ad64dc168c6c753d246e553a280b7d",
         "signature": "5b97ed149c359ffe0e4689017de22299030c0791a3b8097bbb84944350d5b583",
         "affectsGlobalScope": false
       },
       "../src/service/article.service.ts": {
-        "version": "e95719d8a78dcc18980a6d3107d30b3131bf7a111c0aa2b314fb984b7ffc85d1",
+        "version": "1eec81ae2c51f74bf2b25707cf71a89e2e13b349557f89fc071a8fc288280d93",
         "signature": "425926611ed1dd358e706537ad3e7df2ccfa19dbcfe400e6212d2442f54016c3",
         "affectsGlobalScope": false
       },
@@ -3282,8 +3282,8 @@
         "affectsGlobalScope": false
       },
       "../src/models/dto/article/add.dto.ts": {
-        "version": "7239599f94aa1845a30ae257cc2c1b09e57dc7b73ec3ac552c0e3943572a9873",
-        "signature": "56ba6cf611dbf9da1a13c690e2192d79843449329ef7a41c5d56132cdd967624",
+        "version": "2490103072fa10cfb19193f52a542bce6b6e180fe91f3ac1b47c9bb1617c2eda",
+        "signature": "fee2795151e2a695b26ef599fdf1ffc62f0ecd859876d8e63c02d07a5e17da84",
         "affectsGlobalScope": false
       },
       "../src/utils/base.ts": {
@@ -3302,8 +3302,8 @@
         "affectsGlobalScope": false
       },
       "../src/controller/article.controller.ts": {
-        "version": "d3ab56969094183312bb59e131334f47b641af904a50257fc120a61c67af7e84",
-        "signature": "09fac7ed3c11253f31cf6e193cd6a4dd07cf1d754f15420219ae50a09e73b142",
+        "version": "f9493b0c8aec34f2aae71548b2225b5102c0373297646efddd7fce1e3e15aa00",
+        "signature": "4e322b3b5308f08071a5c68b24c2c3e8f5ea757c0e62526d9172390812950ff1",
         "affectsGlobalScope": false
       },
       "../src/module/article.module.ts": {
@@ -19680,6 +19680,7 @@
         "../src/service/app.service.ts"
       ],
       "../src/controller/article.controller.ts": [
+        "../src/models/entity/article.entity.ts",
         "../src/models/vo/article.vo.ts",
         "../src/service/article.service.ts"
       ],

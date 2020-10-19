@@ -6,7 +6,7 @@ class ArticleListVO {
     this.classifyName = classifyName
     this.isShow = isShow
     this.createTime = HandlerUtils.transformTimestamp(createTime)
-    this.editTime = HandlerUtils.transformTimestamp(editTime)
+    this.editTime = !!editTime?HandlerUtils.transformTimestamp(editTime):''
   }
 }
 export default ArticleListVO

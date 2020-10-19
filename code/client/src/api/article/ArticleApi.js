@@ -24,9 +24,7 @@ class ArticleApi {
   }
   /**
    * 新增一条 Article 信息
-   *
-   * 包含有 id, name, classifyId, isShow, mdTextarea, mdContent  的 articleAddDTO 对象
-   *
+   * @param articleAddDTO 包含有 id, name, classifyId, isShow, mdTextarea, mdContent  的 articleAddDTO 对象
    * @memberof ArticleApi
    */
   async addArticle(articleAddDTO) {

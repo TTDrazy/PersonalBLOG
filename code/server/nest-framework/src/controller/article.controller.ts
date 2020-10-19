@@ -20,7 +20,7 @@ export class ArticleController {
   async getList(): Promise<any> {
     const articleData = await this.articleService.getList()
     let articleList = []
-    articleData.map((item: Article) => {  
+    articleData.map((item: Article) => {
       let articleItem = new ArticleVO(item)
       articleList.push(articleItem)
     })
@@ -45,15 +45,14 @@ export class ArticleController {
   /**
    * 添加一条 article 信息
    * @param {*} article 需要添加的 article 信息
-   * @returns {Promise<ArticleVO>} 返回数据库成功存储的 article VO信息
+   * @returns 返回数据库成功存储的 article VO信息
    * @memberof ArticleController
    */
   @Post()
-  async addOne(@Body() article): Promise<ArticleVO> {
+  async addOne(@Body() article) {
     const articleData = new AddDTO(article)
     const articleObj = await this.articleService.addOne(articleData)
-    const articleInfo = new ArticleVO(articleObj)
-    return articleInfo
+    return articleObj
   }
 
   /**

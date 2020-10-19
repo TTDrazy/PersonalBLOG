@@ -31,6 +31,11 @@
       padding: 10px 0;
       .article {
         margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
       &:hover {
         cursor: pointer;

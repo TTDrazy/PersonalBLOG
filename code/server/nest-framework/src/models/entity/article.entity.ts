@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, RelationId } from 'typeorm'
+import { Column, Entity, ManyToOne, RelationId, JoinColumn } from 'typeorm'
 import BaseEntity from './base.entity'
 import Classify from './classify.entity'
 
@@ -14,10 +14,11 @@ export default class Article extends BaseEntity {
     (type) => Classify,
     (classify) => classify.articles
   )
+  @JoinColumn({ name: 'classifyid' })
   classify: Classify
 
+  // @Column()
   @RelationId((article: Article) => article.classify)
-  // @Column('int')
   classifyid: number
 
   @Column('tinyint')

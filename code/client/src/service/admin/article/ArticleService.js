@@ -1,5 +1,6 @@
 import ArticleApi from '@/api/article/ArticleApi'
 import ArticleListVO from '@/models/admin/article/ArticleListVO'
+import AddDTO from '@/models/admin/article/AddDTO'
 
 export default class ArticleService {
   constructor() {
@@ -27,7 +28,7 @@ export default class ArticleService {
                 Date.parse(b.editTime.replace(/-/g, '/')) -
                 Date.parse(a.editTime.replace(/-/g, '/'))
               )
-            }else{
+            } else {
               return (
                 Date.parse(b.createTime.replace(/-/g, '/')) -
                 Date.parse(a.createTime.replace(/-/g, '/'))
@@ -35,6 +36,23 @@ export default class ArticleService {
             }
           })
           resolve(articleShowList)
+        }
+      })
+    })
+  }
+
+  /**
+   * 添加一条 article
+   * @param articleInfo 包含有 name, classifyId, isShow, mdTextarea, mdContent  的 articleAddDTO 对象
+   * @memberof ArticleService
+   */
+  async addArticle(articleInfo) {
+    // console.log(new AddDTO(articleInfo))
+    return new Promise((resolve) => {
+      this.articleApi.addArticle(new AddDTO(articleInfo)).then((response) => {
+        let { statusCode, data } = response.data
+        if (statusCode === 0 && data !== undefined) {
+          resolve(data)
         }
       })
     })
