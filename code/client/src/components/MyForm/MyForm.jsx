@@ -4,16 +4,12 @@ import { Input, Button, Radio, message as Message } from 'antd'
 import MySelect from '../MyInput/MySelect'
 import { Link, withRouter } from 'react-router-dom'
 import MyMarkdown from '../MyMarkdown/MyMarkdown'
-import ClassifyService from '@/service/admin/classify/ClassifyService'
-import ArticleService from '@/service/admin/article/ArticleService'
 
 class MyForm extends Component {
   state = {
-    isClassify: this.props.isClassify,
     id: 0,
     name: '',
     classifyId: null,
-    classifyList: [],
     createTime: '',
     editTime: '',
     isShow: true,
@@ -21,10 +17,7 @@ class MyForm extends Component {
     mdContent: '',
   }
   componentDidMount() {
-    const classifyService = new ClassifyService()
-    classifyService.getClassifyTree().then((data) => {
-      this.setState({ classifyList: data })
-    })
+    // 修改时赋原始值
     if (!!this.props.list) {
       const {
         id,
@@ -76,34 +69,36 @@ class MyForm extends Component {
     })
   }
   submit = () => {
-    const { id, isClassify } = this.state
-    const articleService = new ArticleService()
+    const { id } = this.state
+    const { isClassify, addData, editArticle } = this.props
+    // 确定为添加
     if (id === 0) {
-      // console.log(this.state)
-      articleService.addArticle(this.state).then((data) => {
-        Message.success(
-          `您已成功${isClassify ? '增加此分类' : '上传此篇文章'}！`
-        )
-        console.log(data)
+      addData(this.state).then(() => {
+        if (!!this.props.messageData) {
+          Message.success(
+            `您已成功${isClassify ? '增加此分类' : '上传此篇文章'}！`
+          )
+        } else {
+          Message.warning(
+            `您尚未成功${isClassify ? '增加此分类' : '上传此篇文章'}！`
+          )
+        }
+      })
+    } else {
+      editArticle(this.state).then(() => {
+        if (!!this.props.messageData) {
+          Message.success(`您已成功修改此${isClassify ? '分类' : '篇文章'}！`)
+        } else {
+          Message.warning(`您尚未成功修改此${isClassify ? '分类' : '篇文章'}！`)
+        }
       })
     }
-    //else {
-    //   new ArticleApi().editArticle(this.state).then((resolve, reject) => {
-    //     let { status, message, data } = resolve.data
-    //     if (status === 100) {
-    //       Message.success(`您已成功修改此${isClassify ? '分类' : '篇文章'}！`)
-    //     } else {
-    //       Message.warning(message)
-    //     }
-    //   })
-    //}
 
-    //跳转路由
-    //this.props.history.push(`/admin/${isClassify ? 'classify' : 'article'}`)
+    // 跳转路由
+    this.props.history.push(`/admin/${isClassify ? 'classify' : 'article'}`)
   }
   render() {
     const {
-      isClassify,
       id,
       name,
       createTime,
@@ -111,8 +106,8 @@ class MyForm extends Component {
       mdTextarea,
       mdContent,
       isShow,
-      classifyList,
     } = this.state
+    const { isClassify, treeList } = this.props
     return (
       <>
         <div className={style.container}>
@@ -146,9 +141,9 @@ class MyForm extends Component {
                 {isClassify ? '' : '文章'}所属分类：
               </div>
               <div className={[`${style.column} ${style.inputBox}`]}>
-                {classifyList.length !== 0 ? (
+                {treeList.length !== 0 ? (
                   <MySelect
-                    selectTree={classifyList}
+                    selectTree={treeList}
                     type="select"
                     placeholder="请选择分类"
                     changeSelect={(id) => this.changeSelect(id)}
