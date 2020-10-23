@@ -1,5 +1,14 @@
 # 更新日志
 
+### 2020/10/23
+1. 继续配置前端 model 层与 service 层 -- v1 版
+    - admin
+    - home √
+2. 解决遗留问题
+    - 后台因为 @RelationId 不能使 TypeORM 进行添加/修改 的操作 √
+
+---
+
 ### 2020/10/19
 1. 继续配置前端 model 层与 service 层 -- v1 版
     - admin

@@ -2657,13 +2657,13 @@
         "affectsGlobalScope": false
       },
       "../src/models/entity/article.entity.ts": {
-        "version": "9d4a4b14e8d9fedb8d8900c887a5299470ad64dc168c6c753d246e553a280b7d",
+        "version": "6c23f7fc2aeb50a9108a629bd3c42e313cd58a105ab86731610eef04db467f68",
         "signature": "5b97ed149c359ffe0e4689017de22299030c0791a3b8097bbb84944350d5b583",
         "affectsGlobalScope": false
       },
       "../src/service/article.service.ts": {
-        "version": "1eec81ae2c51f74bf2b25707cf71a89e2e13b349557f89fc071a8fc288280d93",
-        "signature": "425926611ed1dd358e706537ad3e7df2ccfa19dbcfe400e6212d2442f54016c3",
+        "version": "c871353fd83c8c9f70b5f377b5b18b0c215f991c5df877e81e641c3663c039b1",
+        "signature": "94b9bbc341c025af631a5b7e9aceb97bda3a26a84b0b622c8e1031c4e1914194",
         "affectsGlobalScope": false
       },
       "../node_modules/class-validator/types/validation/validationerror.d.ts": {
@@ -3303,7 +3303,7 @@
       },
       "../src/controller/article.controller.ts": {
         "version": "f9493b0c8aec34f2aae71548b2225b5102c0373297646efddd7fce1e3e15aa00",
-        "signature": "4e322b3b5308f08071a5c68b24c2c3e8f5ea757c0e62526d9172390812950ff1",
+        "signature": "26e6f77436b276ce232e5ccbcb63ca4d7eb27c39acd63b40d5f4cf2992d569dc",
         "affectsGlobalScope": false
       },
       "../src/module/article.module.ts": {
@@ -19680,7 +19680,6 @@
         "../src/service/app.service.ts"
       ],
       "../src/controller/article.controller.ts": [
-        "../src/models/entity/article.entity.ts",
         "../src/models/vo/article.vo.ts",
         "../src/service/article.service.ts"
       ],

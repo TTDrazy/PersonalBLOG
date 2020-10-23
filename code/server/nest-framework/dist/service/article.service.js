@@ -28,7 +28,6 @@ let ArticleService = class ArticleService {
         return this.articleRepository.findOne(id, { relations: ['classify'] });
     }
     addOne(article) {
-        console.log(article);
         return this.articleRepository.save(article);
     }
     editOne(article) {

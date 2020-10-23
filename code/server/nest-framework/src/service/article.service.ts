@@ -36,8 +36,7 @@ export class ArticleService {
    * @returns {Promise<Article>} 未经过规范的此条 article 存储 VO 模型
    * @memberof ArticleService
    */
-  public addOne(article): Promise<Article> {
-    console.log(article)
+  public addOne(article): any {
     return this.articleRepository.save(article)
   }
 

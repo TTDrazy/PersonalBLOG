@@ -17,7 +17,7 @@ export default class Article extends BaseEntity {
   @JoinColumn({ name: 'classifyid' })
   classify: Classify
 
-  // @Column()
+  @Column()
   @RelationId((article: Article) => article.classify)
   classifyid: number
 

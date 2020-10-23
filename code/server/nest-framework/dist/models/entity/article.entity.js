@@ -28,6 +28,7 @@ __decorate([
     __metadata("design:type", classify_entity_1.default)
 ], Article.prototype, "classify", void 0);
 __decorate([
+    typeorm_1.Column(),
     typeorm_1.RelationId((article) => article.classify),
     __metadata("design:type", Number)
 ], Article.prototype, "classifyid", void 0);
