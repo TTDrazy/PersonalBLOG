@@ -39,7 +39,7 @@ class MyCard extends Component {
                   // }}
                   className={style.article}
                 >
-                  {item.briefContent}
+                  {item.briefContent}...
                   <a onClick={() => this.toArticleDetails(item.id)}>[详情]</a>
                 </Paragraph>
               </div>
