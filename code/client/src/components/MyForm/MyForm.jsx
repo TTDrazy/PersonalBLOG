@@ -29,6 +29,7 @@ class MyForm extends Component {
         mdContent,
         isShow,
       } = this.props.list
+      console.log(this.props.list)
       this.setState({
         id,
         name,
@@ -144,6 +145,7 @@ class MyForm extends Component {
                 {treeList.length !== 0 ? (
                   <MySelect
                     selectTree={treeList}
+                    defaultValue = {}
                     type="select"
                     placeholder="请选择分类"
                     changeSelect={(id) => this.changeSelect(id)}

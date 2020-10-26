@@ -21,13 +21,13 @@ export default class MySelect extends Component {
         this.props.changeSelect(this.state.searchedId)
       }
     )
+    console.log(this.state.searchedName)
     // this.props.changeSelect && this.props.changeSelect(this.state.searchInfo)
   }
 
   render() {
-    const { type, isClassify, placeholder } = this.props
+    const { type, isClassify, placeholder, selectTree } = this.props
     const { searchedName } = this.state
-    const selectTree = this.props.selectTree
     // console.log(searchInfo);
     //console.log({selectValue });
     return (
@@ -35,7 +35,7 @@ export default class MySelect extends Component {
         <Input.Group compact>
           <div style={{ display: 'flex' }}>
             <Cascader
-              defaultValue={searchedName ? searchedName : []}
+              defaultValue={this.props.defaultValue?this.props.defaultValue:[]}
               //自定义字段名
               fieldNames={{
                 label: 'name',
