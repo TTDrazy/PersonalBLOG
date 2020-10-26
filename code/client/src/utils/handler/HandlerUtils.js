@@ -47,9 +47,9 @@ const HandlerUtils = {
   },
   /**
    * 根据节点找到他的所有父节点
-   * @param {item} - 需要找到父节点的子节点
+   * @param {id} - 需要找到父节点的子节点
    * @param {flattenTree} - 转换好的扁平化递归树
-   * @return {parentArr} 转换好的扁平化递归树
+   * @return {parentArr} - 子节点的所有父节点
    * @memberof HandlerUtils
    */
   findParent(id, flattenTree) {
@@ -62,7 +62,7 @@ const HandlerUtils = {
         }
       })
     }
-    find(id, this.flattenTreeDataClosure(flattenTree))
+    find(id, flattenTree)
     return parentArr
   },
 }

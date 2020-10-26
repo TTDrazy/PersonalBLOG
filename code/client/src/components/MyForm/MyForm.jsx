@@ -4,6 +4,7 @@ import { Input, Button, Radio, message as Message } from 'antd'
 import MySelect from '../MyInput/MySelect'
 import { Link, withRouter } from 'react-router-dom'
 import MyMarkdown from '../MyMarkdown/MyMarkdown'
+import HandlerUtils from '@/utils/handler/HandlerUtils'
 
 class MyForm extends Component {
   state = {
@@ -15,6 +16,7 @@ class MyForm extends Component {
     isShow: true,
     mdTextarea: '',
     mdContent: '',
+    defaultValue: [],
   }
   componentDidMount() {
     // 修改时赋原始值
@@ -29,17 +31,29 @@ class MyForm extends Component {
         mdContent,
         isShow,
       } = this.props.list
-      console.log(this.props.list)
-      this.setState({
-        id,
-        name,
-        classifyId,
-        createTime,
-        editTime,
-        mdTextarea,
-        mdContent,
-        isShow,
-      })
+      this.setState(
+        {
+          id,
+          name,
+          classifyId,
+          createTime,
+          editTime,
+          mdTextarea,
+          mdContent,
+          isShow,
+        },
+        () => {
+          const defaultValue = !!classifyId
+            ? HandlerUtils.findParent(
+                classifyId,
+                HandlerUtils.flattenTreeDataClosure(this.props.treeList)
+              )
+            : []
+          this.setState({
+            defaultValue,
+          })
+        }
+      )
     }
   }
   /**
@@ -107,8 +121,10 @@ class MyForm extends Component {
       mdTextarea,
       mdContent,
       isShow,
+      defaultValue,
     } = this.state
     const { isClassify, treeList } = this.props
+    console.log(defaultValue)
     return (
       <>
         <div className={style.container}>
@@ -145,7 +161,7 @@ class MyForm extends Component {
                 {treeList.length !== 0 ? (
                   <MySelect
                     selectTree={treeList}
-                    defaultValue = {}
+                    defaultValue={defaultValue}
                     type="select"
                     placeholder="请选择分类"
                     changeSelect={(id) => this.changeSelect(id)}

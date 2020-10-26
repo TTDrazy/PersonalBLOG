@@ -5,8 +5,8 @@ export default class MySelect extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchedName: '',
-      searchedId: '',
+      searchedName: [],
+      searchedId: [],
     }
   }
   onChange = (value) => {
@@ -26,35 +26,66 @@ export default class MySelect extends Component {
   }
 
   render() {
-    const { type, isClassify, placeholder, selectTree } = this.props
+    const {
+      type,
+      isClassify,
+      placeholder,
+      selectTree,
+      defaultValue,
+    } = this.props
     const { searchedName } = this.state
-    // console.log(searchInfo);
+    console.log(this.props.defaultValue)
     //console.log({selectValue });
     return (
       <>
         <Input.Group compact>
           <div style={{ display: 'flex' }}>
-            <Cascader
-              defaultValue={this.props.defaultValue?this.props.defaultValue:[]}
-              //自定义字段名
-              fieldNames={{
-                label: 'name',
-                value: 'id',
-                children: 'children',
-              }}
-              //可以选中任意一项
-              changeOnSelect
-              style={{ width: '100%' }}
-              value={searchedName}
-              options={selectTree}
-              placeholder={
-                placeholder
-                  ? placeholder
-                  : `按类别检索${isClassify ? '分类' : '文章'}`
-              }
-              expandTrigger="hover"
-              onChange={this.onChange}
-            />
+            {!!defaultValue ? (
+              <Cascader
+                defaultValue={defaultValue}
+                key={defaultValue}
+                //自定义字段名
+                fieldNames={{
+                  label: 'name',
+                  value: 'id',
+                  children: 'children',
+                }}
+                //可以选中任意一项
+                changeOnSelect
+                style={{ width: '100%' }}
+                value={searchedName}
+                options={selectTree}
+                placeholder={
+                  placeholder
+                    ? placeholder
+                    : `按类别检索${isClassify ? '分类' : '文章'}`
+                }
+                expandTrigger="hover"
+                onChange={this.onChange}
+              />
+            ) : (
+              <Cascader
+                //自定义字段名
+                fieldNames={{
+                  label: 'name',
+                  value: 'id',
+                  children: 'children',
+                }}
+                //可以选中任意一项
+                changeOnSelect
+                style={{ width: '100%' }}
+                value={searchedName}
+                options={selectTree}
+                placeholder={
+                  placeholder
+                    ? placeholder
+                    : `按类别检索${isClassify ? '分类' : '文章'}`
+                }
+                expandTrigger="hover"
+                onChange={this.onChange}
+              />
+            )}
+
             {type === 'select' ? (
               <></>
             ) : (
