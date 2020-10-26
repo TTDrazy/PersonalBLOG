@@ -6,8 +6,6 @@
         - edit
         - classify
             - CRUD
-2. 解决遗留问题
-    - 后台因为 @RelationId 不能使 TypeORM 进行添加/修改 的操作 √
 
 ---
 
