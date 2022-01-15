@@ -12,7 +12,7 @@
         "craco-less": "^1.16.0",
         "highlight": "^0.2.4",
         "highlight.js": "^10.1.0",
-        "marked": "^1.1.0",
+        "marked": "^4.0.10",
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
